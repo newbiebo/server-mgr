@@ -1,0 +1,25 @@
+server:
+  port: 8888
+  servlet:
+    context-path: /servermanager
+spring:
+  application:
+    name: ServerManager
+  aop:
+    proxy-target-class: false
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:src/main/resources/db/server-manager.db
+# mybatis-plus logout
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+# env
+env:
+  bark:
+    server:
+      url: 101.91.225.182:30011
