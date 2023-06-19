@@ -40,7 +40,7 @@ public class MybatisPlusGenerator {
         //2 Configure Data Source
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.SQLITE);
-        dsc.setUrl("jdbc:sqlite:D:\\code\\github\\java\\ServerMannager\\src\\main\\resources\\db\\server-manager.db");
+        dsc.setUrl("jdbc:sqlite:src/main/resources/db/server-manager.db");
         dsc.setDriverName("org.sqlite.JDBC");
         mpg.setDataSource(dsc);
 
