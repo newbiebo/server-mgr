@@ -1,6 +1,6 @@
 # ServerManager
 ## Mobile reminder function
-### 提醒备份成功
+### Reminder of successful backup
 
 ## Backup function
 
