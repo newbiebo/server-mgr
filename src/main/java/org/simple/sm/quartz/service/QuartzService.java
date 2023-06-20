@@ -1,4 +1,4 @@
-package org.simple.sm.quarzt.service;
+package org.simple.sm.quartz.service;
 
 /**
  * @author newbiebo

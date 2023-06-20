@@ -1,7 +1,7 @@
-package org.simple.sm.quarzt.service.impl;
+package org.simple.sm.quartz.service.impl;
 
 import org.quartz.*;
-import org.simple.sm.quarzt.service.QuartzService;
+import org.simple.sm.quartz.service.QuartzService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

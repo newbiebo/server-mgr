@@ -1,4 +1,4 @@
-package org.simple.sm.quarzt.controller;
+package org.simple.sm.quartz.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
