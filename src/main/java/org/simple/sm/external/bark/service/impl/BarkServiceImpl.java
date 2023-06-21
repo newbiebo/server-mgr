@@ -20,18 +20,18 @@ public class BarkServiceImpl implements BarkService {
 
     @Override
     public void push(PushReq pushReq) {
-        log.info("PushService.push(),Enter as:{}", JSONObject.toJSONString(pushReq));
-        StringBuilder append = new StringBuilder("http://")
-                .append(properties.getBarkServerUrl())
-                .append("/")
-                .append(pushReq.getKey())
-                .append(pushReq.getUrl());
-        log.info("Request connection as:{}", append);
-        String resStr = HttpUtil.get(append.toString());
-        if (null != resStr && !"".equals(resStr)) {
-            JSONObject jsonObject = JSON.parseObject(resStr);
-            // todo
-//            String code = jsonObject.getString(ENUM_RES_FIELD.CODE.getKey());
-        }
+//        log.info("PushService.push(),Enter as:{}", JSONObject.toJSONString(pushReq));
+//        StringBuilder append = new StringBuilder("http://")
+//                .append(properties.getBarkServerUrl())
+//                .append("/")
+//                .append(pushReq.getKey())
+//                .append(pushReq.getUrl());
+//        log.info("Request connection as:{}", append);
+//        String resStr = HttpUtil.get(append.toString());
+//        if (null != resStr && !"".equals(resStr)) {
+//            JSONObject jsonObject = JSON.parseObject(resStr);
+//            // todo
+////            String code = jsonObject.getString(ENUM_RES_FIELD.CODE.getKey());
+//        }
     }
 }
