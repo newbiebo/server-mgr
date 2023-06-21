@@ -1,8 +1,6 @@
 package org.simple.sm.quartz.cache;
 
 import com.alibaba.fastjson2.JSONObject;
-import org.simple.sm.db.sqlite.entity.RemindMeJobInfo;
-import org.simple.sm.db.sqlite.service.RemindMeJobInfoService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -27,8 +25,8 @@ import java.util.Map;
  */
 @Component
 public class GlobalJobCache implements CommandLineRunner {
-    @Resource
-    RemindMeJobInfoService remindMeJobInfoService;
+//    @Resource
+//    RemindMeJobInfoService remindMeJobInfoService;
     //定义全局变量
     public static Map<String, JSONObject> allCache = new HashMap<>();
 
