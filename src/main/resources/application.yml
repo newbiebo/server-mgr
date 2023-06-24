@@ -1,7 +1,7 @@
 server:
-  port: 8888
-  servlet:
-    context-path: /servermanager
+  port: 5173
+#  servlet:
+#    context-path: /servermanager
 spring:
   application:
     name: ServerManager
