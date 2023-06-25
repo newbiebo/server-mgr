@@ -1,6 +1,7 @@
 package org.simple.sm.backup.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
+import org.simple.sm.backup.dto.req.BackupManualReqDTO;
 import org.simple.sm.backup.service.BackupService;
 import org.springframework.stereotype.Service;
 
@@ -9,17 +10,16 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.List;
 
 @Slf4j
 @Service
 public class BackupServiceImpl implements BackupService {
 
     @Override
-    public void backupFiles(List<String> sourceFiles, String targetPath) {
+    public void backupFiles(BackupManualReqDTO backupManualReqDTO) {
         //nio copy file
-        Path destinationFolder = Paths.get(targetPath);
-        sourceFiles.forEach(e->{
+        Path destinationFolder = Paths.get(backupManualReqDTO.getTargetPath());
+        backupManualReqDTO.getSourceFiles().forEach(e->{
             Path sourceFile = Paths.get(e);
             Path destinationFile = destinationFolder.resolve(sourceFile.getFileName());
             try {
@@ -32,12 +32,12 @@ public class BackupServiceImpl implements BackupService {
     }
 
     @Override
-    public void backupPath(String sourcePath, String targetPath) {
+    public void backupPath(BackupManualReqDTO backupManualReqDTO) {
         // todo
     }
 
     @Override
-    public void backupAfterCompress(List<String> sourceFiles, String targetPath) {
+    public void backupAfterCompress(BackupManualReqDTO backupManualReqDTO) {
         // todo
     }
 }
