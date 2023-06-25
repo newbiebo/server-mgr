@@ -1,4 +1,4 @@
-# ServerManager
+# server-mgr
 ## Mobile reminder function
 ### Reminder of successful backup
 
