@@ -1,5 +1,5 @@
 server:
-  port: 5173
+  port: 8023
 #  servlet:
 #    context-path: /servermanager
 spring:
@@ -23,3 +23,5 @@ env:
   bark:
     server:
       url: 101.91.225.182:30011
+  servermgr:
+    version: 1.0.1

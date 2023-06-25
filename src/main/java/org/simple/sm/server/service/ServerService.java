@@ -1,4 +1,7 @@
 package org.simple.sm.server.service;
 
-public class ServerService {
+import org.simple.sm.server.dto.res.ServerInfoResDTO;
+
+public interface ServerService {
+    ServerInfoResDTO getServerInfo();
 }
