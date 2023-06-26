@@ -1,7 +1,7 @@
 # server-mgr
 
 
-[README](README.md) | [中文文档](README_zh.md)
+[ENGLISH](README.md) | [中文文档](README_zh.md)
 
 server-mgr is a family private server management application, including flexible resource backup strategy, Apple bark application message notification, email notification, server monitoring, etc.
 
