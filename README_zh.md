@@ -1,6 +1,6 @@
 # server-mgr
 
-[ENGLISH](README.md) | [中文文档](README_zh.md)
+[README](README.md) | [中文文档](README_zh.md)
 
 server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备份策略，苹果bark应用消息通知，邮件通知，服务器监控等。
 
