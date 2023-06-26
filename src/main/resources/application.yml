@@ -24,4 +24,8 @@ env:
     server:
       url: 101.91.225.182:30011
   servermgr:
-    version: 1.0.1
+    version: 0.1.0
+
+# log
+logging:
+  config: classpath:log4j2.yml
