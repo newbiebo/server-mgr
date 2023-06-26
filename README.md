@@ -1,4 +1,10 @@
 # server-mgr
+
+
+[README](README.md) | [中文文档](README_zh.md)
+
+server-mgr is a private server management application, including resource copying,
+
 ## Mobile reminder function
 ### Reminder of successful backup
 
