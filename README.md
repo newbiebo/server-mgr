@@ -23,6 +23,10 @@ Subsequent functions will be developed in succession in the future.
 
 Since there is only one person developing the project for the time being, subsequent iterations will be slower, please forgive me.
 
+## Dashboard
+
+[server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
+
 ## Email Me
 
 📫:1186644190wxb@gmail.com
