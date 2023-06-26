@@ -17,7 +17,7 @@ Deploy server-mgr on your home server, server-mgr can help you:
 
 ## development status
 
-The current version 1.0.1 already supports the local file backup function.
+The current version 0.1.0 already supports the local file backup function.
 
 Subsequent functions will be developed in succession in the future.
 
