@@ -30,4 +30,6 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 
 📫:1186644190wxb@gmail.com
 
+![Repobeats analytic](https://repobeats.axiom.co/api/embed/37feeaf5e311f5920acab4b589a37d1465b08c5e.svg "Repobeats analytics image")
+
 
