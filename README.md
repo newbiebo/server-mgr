@@ -1,7 +1,7 @@
 # server-mgr
 
 
-[ENGLISH](README.md) | [中文文档](README_zh.md)
+[README](README.md) | [中文文档](README_zh.md)
 
 server-mgr is a family private server management application, including flexible resource backup strategy, Apple bark application message notification, email notification, server monitoring, etc.
 
@@ -22,6 +22,10 @@ The current version 1.0.1 already supports the local file backup function.
 Subsequent functions will be developed in succession in the future.
 
 Since there is only one person developing the project for the time being, subsequent iterations will be slower, please forgive me.
+
+## Email Me
+
+📫:1186644190wxb@gmail.com
 
 
 
