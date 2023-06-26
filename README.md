@@ -31,6 +31,8 @@ Since there is only one person developing the project for the time being, subseq
 
 📫:1186644190wxb@gmail.com
 
+![Repobeats analytic](https://repobeats.axiom.co/api/embed/37feeaf5e311f5920acab4b589a37d1465b08c5e.svg "Repobeats analytics image")
+
 
 
 
