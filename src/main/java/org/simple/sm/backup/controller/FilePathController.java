@@ -18,10 +18,6 @@ public class FilePathController {
 
     @PostMapping("/files")
     public List<String> getFilePath(@RequestBody FilePathReqDTO filePathReqDTO){
-        log.debug("{}",filePathReqDTO.getPath());
-        log.info("{}",filePathReqDTO.getPath());
-        log.warn("{}",filePathReqDTO.getPath());
-        log.error("{}",filePathReqDTO.getPath());
         return filePathService.filePathSearch(filePathReqDTO);
 
     }

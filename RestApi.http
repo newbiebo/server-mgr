@@ -5,5 +5,17 @@ POST http://127.0.0.1:8023/path/files
 Content-Type: application/json
 
 {
-"path":"/Youdao/"
+"path":"D:\\code\\sinosoft\\xk"
+}
+
+### File path acquisition
+POST http://127.0.0.1:8023/backup/files
+Content-Type: application/json
+
+{
+  "sourceFiles":[
+    "G:\\test\\test.txt",
+    "G:\\ScreenRecording\\2023-06-16_22-03-55.mkv"
+  ],
+  "targetPath":"G:\\test1"
 }
