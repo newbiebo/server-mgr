@@ -25,7 +25,5 @@ env:
       url: 101.91.225.182:30011
   servermgr:
     version: 0.1.0
-
-# log
 logging:
-  config: classpath:log4j2.yml
+  config: src/main/resources/logback-spring.xml

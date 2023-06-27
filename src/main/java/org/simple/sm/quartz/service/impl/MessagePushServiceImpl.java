@@ -1,15 +1,11 @@
 package org.simple.sm.quartz.service.impl;
 
-import cn.hutool.http.HttpUtil;
-import com.alibaba.fastjson2.JSON;
-import com.alibaba.fastjson2.JSONObject;
-import lombok.extern.slf4j.Slf4j;
+import cn.hutool.crypto.asymmetric.Sign;
 import org.simple.sm.config.Properties;
 import org.simple.sm.external.bark.dto.PushReq;
 import org.simple.sm.quartz.service.MessagePushService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,7 +13,6 @@ import javax.annotation.Resource;
 /**
  * @author newbiebo
  */
-@Slf4j
 @Service
 public class MessagePushServiceImpl implements MessagePushService {
 
