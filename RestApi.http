@@ -1,3 +1,4 @@
+### get server info
 GET http://127.0.0.1:5173/server/get_server_info
 
 ### File path acquisition
@@ -5,7 +6,7 @@ POST http://127.0.0.1:8023/path/files
 Content-Type: application/json
 
 {
-"path":"D:\\code\\sinosoft\\xk"
+"path":"D:\\code\\github"
 }
 
 ### files to path
