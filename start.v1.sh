@@ -1,1 +1,0 @@
-java -Dfile.encoding=UTF8  -Duser.timezone=Asia/Shanghai -XX:+UseG1GC -jar servermanager-1.0.0.jar

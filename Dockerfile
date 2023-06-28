@@ -10,7 +10,7 @@ RUN mkdir -p /home/servermanager
 
 WORKDIR /home/servermanager
 
-COPY ./target/servermanager-1.0.0.jar /home/servermanager/servermanager-1.0.0.jar
-COPY ./start.v1.sh /home/servermanager/start.v1.sh
+COPY ./target/servermanager-0.1.0.jar /home/servermanager/servermanager-0.1.0.jar
+COPY start.sh /home/servermanager/start.v1.sh
 
-ENTRYPOINT ["sh","start.v1.sh"]
+ENTRYPOINT ["sh","start.sh"]
