@@ -1,14 +1,14 @@
 package org.simple.sm.common.constant;
 
-public enum ENUM_QUARTZ_BEHAVIOR {
 
-    BACKUP("BACKUP", "备份"),
-    BARK("BARK", "消息推送");
+public enum ENUM_BACKUP_TYPE {
+    MANUAL("MANUAL", "手动执行"),
+    TASK("TASK", "任务执行");
 
     private final String name;
     private final String desc;
 
-    ENUM_QUARTZ_BEHAVIOR(String name, String desc) {
+    ENUM_BACKUP_TYPE(String name, String desc) {
         this.name = name;
         this.desc = desc;
     }
