@@ -30,7 +30,7 @@ public class TBackupHistory implements Serializable {
 
     private String type;
 
-    private String backupNo;
+    private String backupHistoryNo;
 
     private String resourcePath;
 
