@@ -8,7 +8,7 @@ Content-Type: application/json
 "path":"D:\\code\\sinosoft\\xk"
 }
 
-### File path acquisition
+### files to path
 POST http://127.0.0.1:8023/backup/files
 Content-Type: application/json
 
@@ -17,4 +17,12 @@ Content-Type: application/json
     "G:\\test\\test.txt"
   ],
   "targetPath":"G:\\test1"
+}
+### path to path
+POST http://127.0.0.1:8023/backup/path
+Content-Type: application/json
+
+{
+  "sourcePath":"G:\\test\\",
+  "targetPath":"G:\\test1\\"
 }

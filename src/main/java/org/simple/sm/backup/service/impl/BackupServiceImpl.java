@@ -11,6 +11,7 @@ import org.simple.sm.utils.SequenceUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -54,11 +55,36 @@ public class BackupServiceImpl implements BackupService {
 
     @Override
     public void backupPath(BackupManualReqDTO backupManualReqDTO) {
-        // todo
+        try {
+            //Recursive backup
+            recursiveBackup(backupManualReqDTO.getSourcePath(), backupManualReqDTO.getTargetPath());
+            log.info("Backup completed!");
+        } catch (IOException e) {
+            log.error("Backup failed! as:{}", e.getMessage());
+        }
     }
 
     @Override
     public void backupAfterCompress(BackupManualReqDTO backupManualReqDTO) {
         // todo
+    }
+
+    private static void recursiveBackup(String sourcePath, String targetPath) throws IOException {
+        File sourceDirectory = new File(sourcePath);
+        File[] files = sourceDirectory.listFiles();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile()) {
+                    // Copy files to destination path
+                    String destinationFilePath = targetPath + File.separator + file.getName();
+                    Files.copy(file.toPath(), new File(destinationFilePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+                } else if (file.isDirectory()) {
+                    // Recursive backup of folders
+                    String newSourcePath = sourcePath + File.separator + file.getName();
+                    String newDestinationPath = targetPath + File.separator + file.getName();
+                    recursiveBackup(newSourcePath, newDestinationPath);
+                }
+            }
+        }
     }
 }

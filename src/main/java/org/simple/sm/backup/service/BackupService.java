@@ -7,7 +7,7 @@ public interface BackupService {
     void backupFiles(BackupManualReqDTO backupManualReqDTO);
     //Backup all files in the path
     void backupPath(BackupManualReqDTO backupManualReqDTO);
-    //Compress and backup
+    //Compress before backup
     void backupAfterCompress(BackupManualReqDTO backupManualReqDTO);
 
 }
