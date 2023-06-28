@@ -82,6 +82,11 @@ public class BackupServiceImpl implements BackupService {
                     // Recursive backup of folders
                     String newSourcePath = sourcePath + File.separator + file.getName();
                     String newDestinationPath = targetPath + File.separator + file.getName();
+                    //if subdirectory not exist then mkdir
+                    File targetFolder = new File(new File(targetPath), file.getName());
+                    if (!targetFolder.exists()) {
+                        targetFolder.mkdir();
+                    }
                     recursiveBackup(newSourcePath, newDestinationPath);
                 }
             }
