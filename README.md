@@ -14,6 +14,7 @@ Deploy server-mgr on your home server, server-mgr can help you:
 * The bark application message and email will push the server status in real time.
 * Server Status Monitoring
 * Provide server management page
+* Support Docker rapid deployment
 
 ## development status
 

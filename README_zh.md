@@ -13,6 +13,7 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 * bark应用消息、邮件实时推送服务器状态。
 * 服务器状态监控
 * 提供服务器管理页面
+* 支持docker快速部署
 
 ## 开发状态
 
@@ -22,9 +23,24 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 
 由于项目暂时只有一人维护，后续迭代会稍慢，请见谅。
 
-## Dashboard
+## 仪表盘
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
+
+## 快速开始
+安装docker请参考[docker官方文档](https://docs.docker.com/get-started/)
+
+无需任何操作直接执行如下命令即可体验：
+```
+docker run xxx 
+```
+建议暴漏端口，挂载数据文件
+```
+docker run -it -d \
+--name server-mgr \
+-p 8023:8023 \
+-v xxxx
+```
 
 ## 联系我
 
