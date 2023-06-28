@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.simple</groupId>
-    <artifactId>servermanager</artifactId>
-    <version>0.1.0</version>
+    <artifactId>server-mgr</artifactId>
+    <version>RELEASE</version>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

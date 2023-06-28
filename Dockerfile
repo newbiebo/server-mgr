@@ -5,12 +5,12 @@ MAINTAINER WANGBO
 RUN echo 'Asia/Shanghai' >/etc/timezone
 RUN ln -sf /user/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-VOLUME /home/servermanager
-RUN mkdir -p /home/servermanager
+VOLUME /home/servermgr
+RUN mkdir -p /home/servermgr
 
-WORKDIR /home/servermanager
+WORKDIR /home/servermgr
 
-COPY ./target/servermanager-0.1.0.jar /home/servermanager/servermanager-0.1.0.jar
-COPY start.sh /home/servermanager/start.v1.sh
+COPY ./target/server-mgr-RELEASE.jar /home/servermgr/server-mgr-RELEASE.jar
+COPY start.sh /home/servermgr/start.sh
 
 ENTRYPOINT ["sh","start.sh"]
