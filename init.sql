@@ -53,14 +53,14 @@ CREATE TABLE "t_quartz_history"
 );
 CREATE TABLE "t_backup_history"
 (
-    id            integer not null --主键
+    id                integer not null  --主键
         primary key,
-    job_no        text    not null,--任务号
-    type          text    not null,--备份类型，参考枚举：ENUM_BACKUP_TYPE
-    backup_no     text    not null,--备份唯一id
-    resource_path text    not null,--源路径，文件或文件路径
-    target_path   text    not null,--目标路径
-    is_delete     integer not null,--逻辑删除
-    gmt_create    TEXT    not null,--创建时间
-    gmt_modified  TEXT    not null --修改时间
+    job_no            text    not null,--任务号
+    type              text    not null,--备份类型，参考枚举：ENUM_BACKUP_TYPE
+    backup_history_no text    not null,--备份历史唯一id
+    resource_path     text    not null,--源路径，文件或文件路径
+    target_path       text    not null,--目标路径
+    is_delete         integer DEFAULT 0,--逻辑删除
+    gmt_create        TEXT    not null,--创建时间
+    gmt_modified      TEXT    not null  --修改时间
 );
