@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-25
+ * @since 2023-06-28
  */
 @Service
 public class TQuartzInfoServiceImpl extends ServiceImpl<TQuartzInfoMapper, TQuartzInfo> implements TQuartzInfoService {

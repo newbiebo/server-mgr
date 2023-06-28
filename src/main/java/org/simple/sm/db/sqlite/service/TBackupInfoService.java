@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-25
+ * @since 2023-06-28
  */
 public interface TBackupInfoService extends IService<TBackupInfo> {
 

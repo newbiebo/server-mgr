@@ -1,6 +1,7 @@
 package org.simple.sm.db.sqlite.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableLogic;
@@ -15,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-25
+ * @since 2023-06-28
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -38,10 +39,10 @@ public class TBackupInfo implements Serializable {
     private Integer isDelete;
 
       @TableField(fill = FieldFill.INSERT)
-    private String gmtCreate;
+    private Date gmtCreate;
 
       @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String gmtModified;
+    private Date gmtModified;
 
 
 }

@@ -55,7 +55,7 @@ public class MybatisPlusGenerator {
         //4 Configuration Policy
         StrategyConfig strategy = new StrategyConfig();
         //Set the table to be mapped
-        strategy.setInclude("t_backup_history");
+        strategy.setInclude("t_backup_history").setInclude("t_quartz_history").setInclude("t_backup_info").setInclude("t_bark_info").setInclude("t_quartz_info");
         //Naming of underlined humps
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
