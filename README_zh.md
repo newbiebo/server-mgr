@@ -28,18 +28,19 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
 ## 快速开始
+
+### 入门
 安装docker请参考[docker官方文档](https://docs.docker.com/get-started/)
 
 无需任何操作直接执行如下命令即可体验：
 ```
-docker run xxx 
+docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
 ```
+### 进一步
+
 建议暴漏端口，挂载数据文件
 ```
-docker run -it -d \
---name server-mgr \
--p 8023:8023 \
--v xxxx
+docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
 ```
 
 ## 联系我
