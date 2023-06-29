@@ -62,7 +62,7 @@ So, we follow the tradition...
 
 ## Is it awesome?
 
-[These people](https://github.com/netdata/netdata/stargazers) seem to like it.
+[These people](https://github.com/newbiebo/server-mgr/stargazers) seem to like it.
 
 ## Email Me
 
