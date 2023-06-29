@@ -17,31 +17,36 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 
 ## 开发状态
 
-目前0.1.0版本已经支持本地文件备份功能（支持手动或自动）。
+目前0.1.0版本已经支持本地文件备份功能（支持手动或自动。
 
 后续功能将会在未来，陆续开发出来。
 
 由于项目暂时只有一人维护，后续迭代会稍慢，请见谅。
 
-## 仪表盘
-
-[server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
-
 ## 快速开始
 
 ### 入门
-安装docker请参考[docker官方文档](https://docs.docker.com/get-started/)
 
+安装docker请参考[docker官方文档](https://docs.docker.com/get-started/)
 无需任何操作直接执行如下命令即可体验：
 ```
 docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
 ```
+
 ### 进一步
 
-建议暴漏端口，挂载数据文件
+建议暴漏端口，挂载数据文件：
 ```
 docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
 ```
+
+## 接口文档
+
+[Interface documentation]()
+
+## 仪表盘
+
+[server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
 ## 联系我
 
