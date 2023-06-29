@@ -37,7 +37,7 @@ docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:0.1.0
 
 建议暴漏端口，挂载数据和日志文件：
 ```
-docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
+docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:0.1.0
 ```
 
 ## 接口文档
