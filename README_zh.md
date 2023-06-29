@@ -30,18 +30,14 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 安装docker请参考[docker官方文档](https://docs.docker.com/get-started/)
 无需任何操作直接执行如下命令即可体验：
 ```
-docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
+docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:0.1.0
 ```
 
 ### 进一步
 
-建议暴漏端口，挂载数据文件：
+建议暴漏端口，挂载数据和日志文件：
 ```
 docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
-```
-参数设置:
-```
--e 
 ```
 
 ## 接口文档
@@ -49,6 +45,10 @@ docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/
 [Interface doc](RestApi.http)
 
 ## 仪表盘
+
+仪表盘暂未开源，如需使用请联系我！
+
+不用担心，提供了接口可以使用[点击查看接口详情](RestApi.http)。
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
