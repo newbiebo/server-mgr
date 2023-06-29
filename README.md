@@ -36,13 +36,13 @@ To install docker, please refer to [docker doc](https://docs.docker.com/get-star
 
 You can directly execute the following command without any action to experience it:
 ```
-docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
+docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:0.1.0
 ```
 ### Further
 
 We recommend that you expose the port and mount the data file
 ```
-docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
+docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:0.1.0
 ```
 
 ## Email Me
