@@ -42,7 +42,7 @@ docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:0.1.0
 
 We recommend that you expose the port and mount the data file
 ```
-docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:0.1.0
+docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db -v ${PWD}/log:/home/servermgr/log newbiebo/server-mgr:0.1.0
 ```
 
 ## Email Me
