@@ -36,13 +36,16 @@ docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:0.1.0
 ```
 ### Further
 
-We recommend that you expose the port and mount the data file
+We recommend that you expose the port and mount the data and log file:
 ```
 docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db -v ${PWD}/log:/home/servermgr/log newbiebo/server-mgr:0.1.0
 ```
 ## Dashboard
-The dashboard is not open source, please contact me if you want to use it！
-Don't worry, interface usage is provided.[Click see detail](Don't worry, interface usage is provided.)
+
+The dashboard is not open source, please email me if you want to use it！
+
+Don't worry, interface usage is provided.[Click see detail](RestApi.http)
+
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
 ## Email Me
