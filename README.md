@@ -24,10 +24,6 @@ Subsequent functions will be developed in succession in the future.
 
 Since there is only one person developing the project for the time being, subsequent iterations will be slower, please forgive me.
 
-## Dashboard
-
-[server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
-
 ## Quick start
 
 ### Entry
@@ -44,6 +40,10 @@ We recommend that you expose the port and mount the data file
 ```
 docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db -v ${PWD}/log:/home/servermgr/log newbiebo/server-mgr:0.1.0
 ```
+## Dashboard
+The dashboard is not open source, please contact me if you want to use it！
+Don't worry, interface usage is provided.[Click see detail](Don't worry, interface usage is provided.)
+[server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
 ## Email Me
 
