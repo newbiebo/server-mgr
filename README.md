@@ -48,6 +48,22 @@ Don't worry, interface usage is provided.[Click see detail](RestApi.http)
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
+## Is it any good?
+
+Yes.
+
+_When people first hear about a new product, they frequently ask if it is any good. A Hacker News user
+[remarked](https://news.ycombinator.com/item?id=3067434):_
+
+> Note to self: Starting immediately, all raganwald projects will have a “Is it any good?” section in the readme, and
+> the answer shall be “yes.".
+
+So, we follow the tradition...
+
+## Is it awesome?
+
+[These people](https://github.com/netdata/netdata/stargazers) seem to like it.
+
 ## Email Me
 
 📫:1186644190wxb@gmail.com
