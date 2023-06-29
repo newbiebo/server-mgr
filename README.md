@@ -32,7 +32,7 @@ Since there is only one person developing the project for the time being, subseq
 
 ### Entry
 
-To install docker, please refer to[docker doc](https://docs.docker.com/get-started/)
+To install docker, please refer to [docker doc](https://docs.docker.com/get-started/)
 
 You can directly execute the following command without any action to experience it:
 ```
