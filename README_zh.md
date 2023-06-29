@@ -11,13 +11,13 @@ server-mgr 是一个家庭私人服务器管理应用，包括灵活的资源备
 * 省去购买昂贵的磁盘阵列。
 * 可用极少的资源保证家庭数据安全。
 * bark应用消息、邮件实时推送服务器状态。
-* 服务器状态监控
-* 提供服务器管理页面
-* 支持docker快速部署
+* 服务器状态监控。
+* 提供服务器管理页面。
+* 支持docker快速部署。
 
 ## 开发状态
 
-目前0.1.0版本已经支持本地文件备份功能（支持手动或自动。
+目前0.1.0版本已经支持本地文件备份功能（支持手动或自动）。
 
 后续功能将会在未来，陆续开发出来。
 
@@ -39,10 +39,14 @@ docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
 ```
 docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
 ```
+参数设置:
+```
+-e 
+```
 
 ## 接口文档
 
-[Interface do](RestApi.http)
+[Interface doc](RestApi.http)
 
 ## 仪表盘
 
