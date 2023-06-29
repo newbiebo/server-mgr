@@ -42,7 +42,7 @@ docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/
 
 ## 接口文档
 
-[Interface documentation]()
+[Interface do](RestApi.http)
 
 ## 仪表盘
 
