@@ -12,9 +12,9 @@ Deploy server-mgr on your home server, server-mgr can help you:
 * Eliminate the need to buy expensive disk arrays.
 * Keep family data safe with minimal resources.
 * The bark application message and email will push the server status in real time.
-* Server Status Monitoring
-* Provide server management page
-* Support Docker rapid deployment
+* Server Status Monitoring.
+* Provide server management page.
+* Support Docker rapid deployment.
 
 ## development status
 
@@ -27,6 +27,23 @@ Since there is only one person developing the project for the time being, subseq
 ## Dashboard
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
+
+## Quick start
+
+### Entry
+
+To install docker, please refer to[docker doc](https://docs.docker.com/get-started/)
+
+You can directly execute the following command without any action to experience it:
+```
+docker run -it -d --restart=always --name server-mgr newbiebo/server-mgr:latest
+```
+### Further
+
+We recommend that you expose the port and mount the data file
+```
+docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/home/server-mgr/db newbiebo/server-mgr:latest
+```
 
 ## Email Me
 
