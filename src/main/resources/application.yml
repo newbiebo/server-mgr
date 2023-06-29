@@ -26,4 +26,4 @@ env:
   servermgr:
     version: 0.1.0
 logging:
-  config: src/main/resources/logback-spring.xml
+  config: classpath:logback-spring.xml
