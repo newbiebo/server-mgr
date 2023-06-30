@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
 import org.simple.sm.backup.service.BackupService;
-import org.simple.sm.common.constant.ENUM_BACKUP_TYPE;
+import org.simple.sm.common.enumeration.ENUM_BACKUP_TYPE;
 import org.simple.sm.db.sqlite.entity.TBackupHistory;
 import org.simple.sm.db.sqlite.service.TBackupHistoryService;
 import org.simple.sm.utils.SequenceUtil;

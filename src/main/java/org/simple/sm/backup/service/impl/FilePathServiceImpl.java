@@ -2,7 +2,9 @@ package org.simple.sm.backup.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.FilePathReqDTO;
+import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.FilePathService;
+import org.simple.sm.common.base.BaseResultDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -15,7 +17,7 @@ import java.util.List;
 public class FilePathServiceImpl implements FilePathService {
 
     @Override
-    public List<String> filePathSearch(FilePathReqDTO filePathReqDTO) {
+    public FilePathResDTO filePathSearch(FilePathReqDTO filePathReqDTO) {
         //Default root path
         if (StringUtils.isEmpty(filePathReqDTO.getPath())) {
             filePathReqDTO.setPath("/");
@@ -32,6 +34,6 @@ public class FilePathServiceImpl implements FilePathService {
         } else {
             log.info("The specified path does not exist or is not a folder.");
         }
-        return list;
+        return FilePathResDTO.builder().paths(list).build();
     }
 }

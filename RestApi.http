@@ -1,7 +1,7 @@
 ### get server info
 GET http://127.0.0.1:5173/server/get_server_info
 
-### File path acquisition
+### get folder list
 POST http://127.0.0.1:8023/path/files
 Content-Type: application/json
 
@@ -9,7 +9,7 @@ Content-Type: application/json
 "path":"D:\\code\\github"
 }
 
-### files to path
+### cppy files to path.supports multiple file collections
 POST http://127.0.0.1:8023/backup/files
 Content-Type: application/json
 
@@ -19,7 +19,7 @@ Content-Type: application/json
   ],
   "targetPath":"G:\\test1"
 }
-### path to path
+### copy files from the specified path to the target path
 POST http://127.0.0.1:8023/backup/path
 Content-Type: application/json
 
@@ -27,3 +27,40 @@ Content-Type: application/json
   "sourcePath":"G:\\test\\",
   "targetPath":"G:\\test1\\"
 }
+
+### save a job
+POST http://127.0.0.1:8023/job/save_job
+Content-Type: application/json
+
+{
+  "jobName": "test_jobName",
+  "jobGroup": "test_jobGroup",
+  "expression": "*/5 * * * * *"
+}
+
+### get Job list/ todo get a job
+POST http://127.0.0.1:8023/job/get_jobs
+Content-Type: application/json
+
+{
+
+}
+
+### job logical deletion
+POST http://127.0.0.1:8023/job/remove_job
+Content-Type: application/json
+
+{
+  "jobNo": "16e6c59a867649429950328fcf15c90b"
+}
+
+### update job
+POST http://127.0.0.1:8023/job/update_job
+Content-Type: application/json
+
+{
+  "jobNo": "b9f3f5f0da49405e9bcc02551755c199",
+  "jobName": "test_jobName_modify"
+}
+
+
