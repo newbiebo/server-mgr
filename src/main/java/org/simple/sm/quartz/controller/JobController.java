@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * quartz controller
+ * job controller
  */
 @RestController
 @RequestMapping("job")
