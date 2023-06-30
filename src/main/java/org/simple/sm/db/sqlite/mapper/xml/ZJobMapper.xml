@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.simple.sm.db.sqlite.mapper.ZJobMapper">
+    <select id="getBackupJobList" resultType="org.simple.sm.quartz.dto.job.ExecutableBackupJob">
+        select m.job_no        as jobNo,
+               m.job_name      as jobName,
+               m.job_group     as jobGroup,
+               m.expression    as expression,
+               n.resource_path as resourcePath,
+               n.target_path   as targetPath
+        from t_quartz_info m
+                 left join t_backup_info n on n.job_no = m.job_no
+        where n.is_delete = 0
+          and m.is_delete = 0;
+    </select>
+</mapper>
