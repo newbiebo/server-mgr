@@ -1,4 +1,4 @@
-package org.simple.sm.common.constant;
+package org.simple.sm.common.enumeration;
 
 public enum ENUM_USER_CLIENT {
 

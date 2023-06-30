@@ -1,20 +1,20 @@
-package org.simple.sm.common.constant;
+package org.simple.sm.common.enumeration;
 
 public enum ENUM_QUARTZ_BEHAVIOR {
 
     BACKUP("BACKUP", "备份"),
     BARK("BARK", "消息推送");
 
-    private final String name;
+    private final String code;
     private final String desc;
 
-    ENUM_QUARTZ_BEHAVIOR(String name, String desc) {
-        this.name = name;
+    ENUM_QUARTZ_BEHAVIOR(String code, String desc) {
+        this.code = code;
         this.desc = desc;
     }
 
-    public String getName() {
-        return name;
+    public String getCode() {
+        return code;
     }
 
     public String getDesc() {
