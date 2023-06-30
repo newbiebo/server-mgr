@@ -1,5 +1,5 @@
 ### get server info
-GET http://127.0.0.1:5173/server/get_server_info
+GET http://127.0.0.1:8023/server/get_server_info
 
 ### get folder list
 POST http://127.0.0.1:8023/path/files

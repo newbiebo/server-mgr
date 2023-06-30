@@ -34,7 +34,7 @@ public class JobServiceImpl implements JobService {
         tQuartzInfo.setGmtModified(new Date());
         tQuartzInfo.setIsDelete(0);
         tQuartzInfoService.getBaseMapper().insert(tQuartzInfo);
-        //todo add to local cache
+        // todo add to local cache
     }
     @Override
     public List<JobResDTO> getJobs(JobReqDTO jobReqDTO) {
@@ -63,7 +63,7 @@ public class JobServiceImpl implements JobService {
         QueryWrapper<TQuartzInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("job_no",jobReqDTO.getJobNo());
         tQuartzInfoService.getBaseMapper().update(tQuartzInfo,wrapper);
-        //todo sync local cache
+        // todo sync local cache
     }
 
     @Override
@@ -71,6 +71,6 @@ public class JobServiceImpl implements JobService {
         QueryWrapper<TQuartzInfo> wrapper = new QueryWrapper<>();
         wrapper.eq("job_no",jobReqDTO.getJobNo());
         tQuartzInfoService.getBaseMapper().delete(wrapper);
-        //todo sync local cache
+        // todo sync local cache
     }
 }
