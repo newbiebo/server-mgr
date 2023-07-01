@@ -6,7 +6,7 @@ POST http://127.0.0.1:8023/path/files
 Content-Type: application/json
 
 {
-"path":"D:\\code\\github"
+"path":"/Users/newbiebo"
 }
 
 ### cppy files to path.supports multiple file collections

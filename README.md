@@ -48,6 +48,8 @@ Don't worry, interface usage is provided.[Click see detail](RestApi.http)
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
+![img_1.png](img_1.png)
+
 ## Is it any good?
 
 Yes.

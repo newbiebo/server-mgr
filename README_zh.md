@@ -52,6 +52,8 @@ docker run -it -d --restart=always --name server-mgr -p 8023:8023 -v ${PWD}/db:/
 
 [server-mgr-web](https://github.com/newbiebo/server-mgr-web/tree/master)
 
+![img_1.png](img_1.png)
+
 ## 联系我
 
 📫:1186644190wxb@gmail.com
