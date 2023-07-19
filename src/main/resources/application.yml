@@ -27,3 +27,8 @@ env:
     version: 0.1.0
 logging:
   config: classpath:logback-spring.xml
+
+# swagger2
+swagger2:
+  ui:
+    enable: true

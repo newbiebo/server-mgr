@@ -3,6 +3,7 @@ package org.simple.sm.quartz.run;
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.db.sqlite.service.ZJobService;
 import org.simple.sm.quartz.dto.job.ExecutableBackupJob;
+import org.simple.sm.quartz.dto.job.ExecutableBarkJob;
 import org.simple.sm.quartz.dto.job.ExecutableJob;
 import org.simple.sm.quartz.service.QuartzService;
 import org.springframework.boot.ApplicationArguments;
@@ -29,8 +30,10 @@ public class InitJobApplicationRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
+
         //traverse each job and execute
-        this.getJobList().forEach(e->{
+        List<ExecutableJob> jobList = this.getJobList();
+        jobList.forEach(e->{
             try{
                 String className = e.getType();
                 quartzService.startJob(
@@ -43,31 +46,37 @@ public class InitJobApplicationRunner implements ApplicationRunner {
             }catch (Exception ex){
                 log.error("Initialize jobs exception,as:{}",ex.getMessage());
             }
-
+            log.info("Initialize jobs successful! current jobs include:{}",jobList);
         });
     }
     //obtain all executable jobs
-    private List<ExecutableBackupJob> getJobList() {
-        List<ExecutableBackupJob> executableJobs = new ArrayList<>();
-        zJobService.getBuckupJobList().forEach(e->
-        {
-            ExecutableBackupJob executableBackupJob = new ExecutableBackupJob();
-            executableBackupJob.setJobNo(e.getJobNo());
-            executableBackupJob.setJobName(e.getJobNo());
-            executableBackupJob.setJobGroup(e.getJobGroup());
-            executableBackupJob.setExpression(e.getExpression());
-            executableBackupJob.setType(e.get)
-                    .jobName(e.getJobName())
-                    .jobGroup(e.getJobGroup())
-                    .expression(e.getExpression())
-                    .resourcePath(e.getResourcePath())
-                    .targetPath(e.getTargetPath())
-                    .type(e.getType())
-                    .build();
-            executableJobs.add(
+    private List<ExecutableJob> getJobList() {
 
-        })
-        );
-        return executableJobs;
+//        List<ExecutableBackupJob> executableBackupJobs = zJobService.getBuckupJobList();
+//        List<ExecutableBarkJob> executableBarkJobs = zJobService.getBarkJobList();
+        List<ExecutableJob> newExecutableJobs = new ArrayList<>();
+//        executableBarkJobs.forEach(e->
+//        {
+//            ExecutableJob  executableJob = new ExecutableJob();
+//            executableJob.setJobNo(e.getJobNo());
+//            executableJob.setJobName(e.getJobNo());
+//            executableJob.setJobGroup(e.getJobGroup());
+//            executableJob.setExpression(e.getExpression());
+//            executableJob.setType(e.getType());
+//            newExecutableJobs.add(executableJob);
+//
+//        });
+//        executableBackupJobs.forEach(e->
+//        {
+//            ExecutableJob  executableJob = new ExecutableJob();
+//            executableJob.setJobNo(e.getJobNo());
+//            executableJob.setJobName(e.getJobNo());
+//            executableJob.setJobGroup(e.getJobGroup());
+//            executableJob.setExpression(e.getExpression());
+//            executableJob.setType(e.getType());
+//            newExecutableJobs.add(executableJob);
+//
+//        });
+        return newExecutableJobs;
     }
 }

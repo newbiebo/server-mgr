@@ -13,4 +13,17 @@
         where n.is_delete = 0
           and m.is_delete = 0;
     </select>
+
+    <select id="getBarkJobList" resultType="org.simple.sm.quartz.dto.job.ExecutableBarkJob">
+        select m.job_no        as jobNo,
+               m.job_name      as jobName,
+               m.job_group     as jobGroup,
+               m.expression    as expression,
+               n.client as client,
+               n.url   as url
+        from t_quartz_info m
+                 left join t_bark_info n on n.job_no = m.job_no
+        where n.is_delete = 0
+          and m.is_delete = 0;
+    </select>
 </mapper>
