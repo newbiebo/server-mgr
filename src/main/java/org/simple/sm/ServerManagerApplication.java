@@ -16,7 +16,15 @@ import org.springframework.context.annotation.Configuration;
 public class ServerManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServerManagerApplication.class, args);
-        System.out.println("------ServerManagerApplication Is Runing------");
+        System.out.println(
+                "____________________________________________________________\n" +
+                "      __                                  _   _             \n" +
+                "    /    )                                /  /|             \n" +
+                "----\\--------__---)__---------__---)__---/| /-|----__---)__-\n" +
+                "     \\     /___) /   ) | /  /___) /   ) / |/  |  /   ) /   )\n" +
+                "_(____/___(___ _/______|/__(___ _/_____/__/___|_(___/_/_____\n" +
+                "                                                   /        \n" +
+                "                                               (_ / ");
     }
 
 }
