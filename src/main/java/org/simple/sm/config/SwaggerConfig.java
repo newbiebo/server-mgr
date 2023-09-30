@@ -26,10 +26,11 @@ public class SwaggerConfig {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
-    public Docket createRestApi() {
+    public Docket docket() {
         if (displaySwitch) logger.info("doc url:http://localhost:{}/server-mgr/swagger-ui.html",serverPort);
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
+                .groupName("newbiebo")
                 //Is it enabled (true to enable false to hide. It is recommended to hide in production environments)
                 .enable(displaySwitch)
                 .select()
