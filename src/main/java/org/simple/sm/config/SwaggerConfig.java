@@ -21,11 +21,13 @@ public class SwaggerConfig {
     private boolean displaySwitch;
     @Value("${server.port}")
     private String serverPort;
+    @Value("${env.servermgr.version}")
+    private String version;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Bean
     public Docket createRestApi() {
-        if (displaySwitch) logger.info("doc url：http://localhost:{}/v2/api-docs",serverPort);
+        if (displaySwitch) logger.info("doc url:http://localhost:{}/server-mgr/swagger-ui.html",serverPort);
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 //Is it enabled (true to enable false to hide. It is recommended to hide in production environments)
@@ -47,7 +49,7 @@ public class SwaggerConfig {
                 //Service Terms URL
                 .termsOfServiceUrl("http://localhost:"+serverPort+"/")
                 //version number
-                .version("1.0.0")
+                .version(version)
                 .build();
     }
 }

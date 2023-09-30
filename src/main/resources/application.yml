@@ -1,7 +1,7 @@
 server:
   port: 8023
-#  servlet:
-#    context-path: /servermanager
+  servlet:
+    context-path: /server-mgr
 spring:
   application:
     name: ServerManager
