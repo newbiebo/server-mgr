@@ -1,6 +1,4 @@
-package org.simple.sm.utils;
-
-import org.springframework.stereotype.Component;
+package org.simple.sm.common.utils;
 
 import java.util.UUID;
 

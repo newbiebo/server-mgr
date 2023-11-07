@@ -1,6 +1,5 @@
 package org.simple.sm.common.base;
 
-import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;

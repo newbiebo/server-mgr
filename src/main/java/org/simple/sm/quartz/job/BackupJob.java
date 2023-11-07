@@ -1,10 +1,8 @@
 package org.simple.sm.quartz.job;
 
-import com.alibaba.fastjson2.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
 import org.simple.sm.backup.service.BackupService;
-import org.simple.sm.external.bark.dto.PushReq;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;

@@ -7,7 +7,7 @@ import org.simple.sm.db.sqlite.service.TQuartzInfoService;
 import org.simple.sm.quartz.dto.req.JobReqDTO;
 import org.simple.sm.quartz.dto.res.JobResDTO;
 import org.simple.sm.quartz.service.JobService;
-import org.simple.sm.utils.SequenceUtil;
+import org.simple.sm.common.utils.SequenceUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

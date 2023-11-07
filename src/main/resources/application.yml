@@ -22,7 +22,14 @@ mybatis-plus:
 env:
   bark:
     server:
-      url: 101.91.225.182:30011
+      url: 101.91.225.182:30032
+      keys: cemimNcdSxda2jYyBYUB9
+      sound:  #声音
+      isArchive: #自动保存通知消息，1-是
+      icon: #自定义图标
+      group: #对消息进行分组
+      timeLiness: #时效性通知 1、active-默认值，系统会立即亮屏通知 2、timeSensitive-可在专注模式下显示通知 3、passive-仅将通知添加到通知列表，不会亮屏提醒
+      level:
   servermgr:
     version: 0.1.0
 logging:
