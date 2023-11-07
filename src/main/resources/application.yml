@@ -31,7 +31,7 @@ env:
       timeLiness: #时效性通知 1、active-默认值，系统会立即亮屏通知 2、timeSensitive-可在专注模式下显示通知 3、passive-仅将通知添加到通知列表，不会亮屏提醒
       level:
   servermgr:
-    version: 0.1.0
+    version: 0.1.1
 logging:
   config: classpath:logback-spring.xml
 

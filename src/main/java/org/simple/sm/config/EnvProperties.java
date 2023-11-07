@@ -10,7 +10,6 @@ public class EnvProperties {
 
     @Value("${env.bark.server.url}")
     private String barkServerUrl;
-    @Value("${env.servermgr.version}")
-    private String version;
+
 
 }

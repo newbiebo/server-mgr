@@ -63,4 +63,6 @@ Content-Type: application/json
   "jobName": "test_jobName_modify"
 }
 
+### push msg
+GET http://127.0.0.1:8023/server-mgr/test/barkService/push?msg=你好
 

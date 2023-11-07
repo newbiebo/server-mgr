@@ -1,7 +1,8 @@
 package org.simple.sm.external.bark.service;
 
-import org.simple.sm.external.bark.dto.PushReq;
-
+/**
+ * bark消息推送接口
+ */
 public interface BarkService {
     /**
      * 推送消息
