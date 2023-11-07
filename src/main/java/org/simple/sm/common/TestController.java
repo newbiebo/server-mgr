@@ -1,6 +1,6 @@
 package org.simple.sm.common;
 
-import org.simple.sm.external.bark.service.BarkService;
+import org.simple.sm.notification.bark.service.BarkService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

@@ -1,4 +1,4 @@
-package org.simple.sm.external.bark.service;
+package org.simple.sm.notification.bark.service;
 
 /**
  * bark消息推送接口

@@ -23,7 +23,7 @@ env:
   bark:
     server:
       url: 101.91.225.182:30032
-      keys: cemimNcdSxda2jYyBYUB9
+      keys: cemimNcdSxda2jYyBYUB9,ozzVLYa8Goe8cg3P48sNH4
       sound:  #声音
       isArchive: #自动保存通知消息，1-是
       icon: #自定义图标
@@ -39,3 +39,14 @@ logging:
 swagger2:
   ui:
     enable: true
+
+#mail
+mail:
+  receivers:
+  cc:
+  bcc:
+  sender:
+  host:
+  username:
+  password:
+  port: 1111

@@ -20,12 +20,12 @@ public class BackupManualController {
         backupService.backupFiles(backupManualReqDTO);
     }
 
-    @PostMapping("path")
+    @PostMapping("/path")
     public void backupPath(@RequestBody BackupManualReqDTO backupManualReqDTO){
         backupService.backupPath(backupManualReqDTO);
     }
 
-    @PostMapping("after_compress")
+    @PostMapping("/after_compress")
     public void backupAfterCompress(@RequestBody BackupManualReqDTO backupManualReqDTO){
         backupService.backupAfterCompress(backupManualReqDTO);
     }
