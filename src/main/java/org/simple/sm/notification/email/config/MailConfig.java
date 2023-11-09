@@ -13,8 +13,7 @@ import java.util.List;
 @Component
 public class MailConfig {
 
-    // ---------------- 邮件配置 ----------------------------
-    /**
+        /**
      * 邮件接收人
      */
     @Value("#{'${mail.receivers}'.split(',')}")

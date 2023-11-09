@@ -42,11 +42,18 @@ swagger2:
 
 #mail
 mail:
-  receivers:
+  receivers: 1186644190wxb@gmail.com
   cc:
   bcc:
-  sender:
-  host:
-  username:
+  sender: newbiebo@163.com
+  host: smtp.163.com
+  username: newbiebo@163.com
   password:
-  port: 1111
+  port: 25
+
+velocity:
+  vm:
+    name: /velocity/velocityTemplate.vm
+thymeleaf:
+  html:
+    name: /thymeleaf/emailTemplate.html
