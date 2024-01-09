@@ -41,14 +41,14 @@ public class JobServiceImpl implements JobService {
         List<JobResDTO> jobResDTOs = new ArrayList<>();
         QueryWrapper<TQuartzInfo> wrapper = new QueryWrapper<>();
         List<TQuartzInfo> tQuartzInfos = tQuartzInfoService.getBaseMapper().selectList(wrapper);
-        tQuartzInfos.forEach(e->
-            jobResDTOs.add(JobResDTO.builder()
-                    .jobNo(e.getJobNo())
-                    .jobName(e.getJobName())
-                    .jobGroup(e.getJobGroup())
-                    .expression(e.getExpression())
-                    .build())
-        );
+        tQuartzInfos.forEach(e->{
+                    JobResDTO jobResDTO = new JobResDTO();
+                    jobResDTO.setJobNo(e.getJobNo());
+                    jobResDTO.setJobNo(e.getJobName());
+                    jobResDTO.setJobNo(e.getJobGroup());
+                    jobResDTO.setJobNo(e.getExpression());
+                    jobResDTOs.add(jobResDTO);
+                });
         return jobResDTOs;
     }
     @Override

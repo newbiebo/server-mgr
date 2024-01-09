@@ -4,7 +4,6 @@ import org.simple.sm.common.base.BaseResultDTO;
 import org.simple.sm.quartz.dto.req.JobReqDTO;
 import org.simple.sm.quartz.dto.res.JobResDTO;
 import org.simple.sm.quartz.service.JobService;
-import org.simple.sm.common.utils.SequenceUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
@@ -20,7 +19,7 @@ import java.util.List;
  * job controller
  */
 @RestController
-@RequestMapping("job")
+@RequestMapping("/job")
 public class JobController {
 
     @Resource

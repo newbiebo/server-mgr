@@ -7,7 +7,6 @@ import org.simple.sm.backup.service.BackupService;
 import org.simple.sm.common.enumeration.ENUM_BACKUP_TYPE;
 import org.simple.sm.db.sqlite.entity.TBackupHistory;
 import org.simple.sm.db.sqlite.service.TBackupHistoryService;
-import org.simple.sm.common.utils.SequenceUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

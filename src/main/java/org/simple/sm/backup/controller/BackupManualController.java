@@ -16,7 +16,7 @@ public class BackupManualController {
     BackupService backupService;
 
     @PostMapping("/files")
-    public void getServerInfo(@RequestBody BackupManualReqDTO backupManualReqDTO){
+    public void backupFiles(@RequestBody BackupManualReqDTO backupManualReqDTO){
         backupService.backupFiles(backupManualReqDTO);
     }
 
