@@ -1,14 +1,16 @@
 package org.simple.sm.quartz.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import org.simple.sm.common.enumeration.ENUM_BASE_RESULT;
 import org.simple.sm.common.enumeration.ENUM_JOB_STATUS;
+import org.simple.sm.component.snowflake.IdWorker;
 import org.simple.sm.db.sqlite.entity.TQuartzInfo;
 import org.simple.sm.db.sqlite.service.TQuartzInfoService;
 import org.simple.sm.quartz.dto.req.JobReqDTO;
 import org.simple.sm.quartz.dto.res.JobResDTO;
 import org.simple.sm.quartz.service.JobService;
-import org.simple.sm.common.utils.SequenceUtil;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -19,13 +21,23 @@ import java.util.List;
 public class JobServiceImpl implements JobService {
 
     @Resource
+    IdWorker idWorker;
+    @Resource
     TQuartzInfoService tQuartzInfoService;
 
     @Override
-    public void addJob(JobReqDTO jobReqDTO) {
+    public JobResDTO addJob(JobReqDTO jobReqDTO) {
+        JobResDTO jobResDTO = new JobResDTO();
+        jobReqDTO.setJobNo(String.valueOf(idWorker.nextId()));
+        if (StringUtils.isEmpty(jobReqDTO.getJobName())
+                || StringUtils.isEmpty(jobReqDTO.getJobGroup())
+                || StringUtils.isEmpty(jobReqDTO.getExpression())) {
+            jobResDTO.failure(ENUM_BASE_RESULT.FILED);
+            return jobResDTO;
+        }
         //db
         TQuartzInfo tQuartzInfo = new TQuartzInfo();
-        tQuartzInfo.setJobNo(SequenceUtil.generateId());
+        tQuartzInfo.setJobNo(String.valueOf(idWorker.nextId()));
         tQuartzInfo.setJobGroup(jobReqDTO.getJobGroup());
         tQuartzInfo.setJobName(jobReqDTO.getJobName());
         tQuartzInfo.setExpression(jobReqDTO.getExpression());
@@ -35,6 +47,8 @@ public class JobServiceImpl implements JobService {
         tQuartzInfo.setIsDelete(0);
         tQuartzInfoService.getBaseMapper().insert(tQuartzInfo);
         // todo add to local cache
+        jobResDTO.success(ENUM_BASE_RESULT.SUCCESS);
+        return jobResDTO;
     }
     @Override
     public List<JobResDTO> getJobs(JobReqDTO jobReqDTO) {

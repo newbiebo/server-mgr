@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
 import org.simple.sm.backup.service.BackupService;
 import org.simple.sm.common.enumeration.ENUM_BACKUP_TYPE;
+import org.simple.sm.component.snowflake.IdWorker;
 import org.simple.sm.db.sqlite.entity.TBackupHistory;
 import org.simple.sm.db.sqlite.service.TBackupHistoryService;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,8 @@ import java.util.Date;
 public class BackupServiceImpl implements BackupService {
 
     @Resource
+    IdWorker idWorker;
+    @Resource
     TBackupHistoryService tBackupHistoryService;
 
     @Override
@@ -38,7 +41,7 @@ public class BackupServiceImpl implements BackupService {
                 Files.copy(sourceFile, destinationFile, StandardCopyOption.REPLACE_EXISTING);
                 //persistent data
                 TBackupHistory tBackupHistory = new TBackupHistory();
-                tBackupHistory.setBackupHistoryNo(SequenceUtil.generateId());
+                tBackupHistory.setBackupHistoryNo(String.valueOf(idWorker.nextId()));
                 tBackupHistory.setType(ENUM_BACKUP_TYPE.MANUAL.getCode());
                 tBackupHistory.setJobNo("default");
                 tBackupHistory.setTargetPath(backupManualReqDTO.getTargetPath());

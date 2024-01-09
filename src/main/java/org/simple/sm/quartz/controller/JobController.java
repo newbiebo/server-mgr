@@ -26,18 +26,9 @@ public class JobController {
     JobService jobService;
 
     @PostMapping("/save_job")
-    public ResponseEntity<BaseResultDTO> addJob(@RequestBody JobReqDTO jobReqDTO) throws Exception {
-        BaseResultDTO baseResultDTO = new BaseResultDTO();
-        jobReqDTO.setJobNo(SequenceUtil.generateId());
-        if (StringUtils.isEmpty(jobReqDTO.getJobName())
-                || StringUtils.isEmpty(jobReqDTO.getJobGroup())
-                || StringUtils.isEmpty(jobReqDTO.getExpression())) {
-            baseResultDTO.setResultCode("0");
-            baseResultDTO.setResultMessage(" The input parameter is incorrect, please check and input! ");
-            return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
-        }
-        jobService.addJob(jobReqDTO);
-        return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
+    public ResponseEntity<JobResDTO> addJob(@RequestBody JobReqDTO jobReqDTO) throws Exception {
+        JobResDTO jobResDTO = jobService.addJob(jobReqDTO);
+        return new ResponseEntity<>(jobResDTO, HttpStatus.OK);
     }
     /**
      * Job query interface
