@@ -32,7 +32,7 @@ public class JobServiceImpl implements JobService {
         if (StringUtils.isEmpty(jobReqDTO.getJobName())
                 || StringUtils.isEmpty(jobReqDTO.getJobGroup())
                 || StringUtils.isEmpty(jobReqDTO.getExpression())) {
-            jobResDTO.failure(ENUM_BASE_RESULT.FILED);
+            jobResDTO.failure(ENUM_BASE_RESULT.FAIL);
             return jobResDTO;
         }
         //db

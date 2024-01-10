@@ -2,7 +2,11 @@ package org.simple.sm.backup.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
+import org.simple.sm.backup.dto.res.BackupManualResDTO;
+import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.BackupService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -15,18 +19,19 @@ public class BackupManualController {
     @Resource
     BackupService backupService;
 
-    @PostMapping("/files")
-    public void backupFiles(@RequestBody BackupManualReqDTO backupManualReqDTO){
-        backupService.backupFiles(backupManualReqDTO);
+    @PostMapping("/backupFiles")
+    public ResponseEntity<BackupManualResDTO> backupFiles(@RequestBody BackupManualReqDTO backupManualReqDTO){
+        return new ResponseEntity<>(backupService.backupFiles(backupManualReqDTO), HttpStatus.OK);
     }
 
-    @PostMapping("/path")
-    public void backupPath(@RequestBody BackupManualReqDTO backupManualReqDTO){
-        backupService.backupPath(backupManualReqDTO);
+    @PostMapping("/backupPath")
+    public ResponseEntity<BackupManualResDTO> backupPath(@RequestBody BackupManualReqDTO backupManualReqDTO){
+        return new ResponseEntity<>(backupService.backupPath(backupManualReqDTO), HttpStatus.OK);
+
     }
 
-    @PostMapping("/after_compress")
-    public void backupAfterCompress(@RequestBody BackupManualReqDTO backupManualReqDTO){
-        backupService.backupAfterCompress(backupManualReqDTO);
+    @PostMapping("/backupAfterCompress")
+    public ResponseEntity<BackupManualResDTO> backupAfterCompress(@RequestBody BackupManualReqDTO backupManualReqDTO){
+        return new ResponseEntity<>(backupService.backupAfterCompress(backupManualReqDTO), HttpStatus.OK);
     }
 }

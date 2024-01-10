@@ -8,7 +8,7 @@ import java.util.List;
 public class BackupManualReqDTO {
 
     /**
-     * Path of the file to be backed up
+     * Path of the files to be backed up
      */
     private List<String> sourceFiles;
     /**

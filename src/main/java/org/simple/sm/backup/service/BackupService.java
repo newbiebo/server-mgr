@@ -1,13 +1,14 @@
 package org.simple.sm.backup.service;
 
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
+import org.simple.sm.backup.dto.res.BackupManualResDTO;
 
 public interface BackupService {
     //Backup specified files
-    void backupFiles(BackupManualReqDTO backupManualReqDTO);
+    BackupManualResDTO backupFiles(BackupManualReqDTO backupManualReqDTO);
     //Backup all files in the path
-    void backupPath(BackupManualReqDTO backupManualReqDTO);
+    BackupManualResDTO backupPath(BackupManualReqDTO backupManualReqDTO);
     //Compress before backup
-    void backupAfterCompress(BackupManualReqDTO backupManualReqDTO);
+    BackupManualResDTO backupAfterCompress(BackupManualReqDTO backupManualReqDTO);
 
 }

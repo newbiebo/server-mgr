@@ -19,7 +19,7 @@ public class FilePathController {
     @Resource
     FilePathService filePathService;
 
-    @PostMapping("/files")
+    @PostMapping("/getFilePath")
     public ResponseEntity<FilePathResDTO> getFilePath(@RequestBody FilePathReqDTO filePathReqDTO){
         return new ResponseEntity<>(filePathService.filePathSearch(filePathReqDTO), HttpStatus.OK);
     }

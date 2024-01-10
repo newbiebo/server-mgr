@@ -7,7 +7,6 @@ import org.simple.sm.common.base.BaseResultDTO;
 import java.util.List;
 
 @Data
-@Builder
 public class FilePathResDTO extends BaseResultDTO {
     private List<String> paths;
 }

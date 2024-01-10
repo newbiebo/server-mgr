@@ -4,7 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.FilePathReqDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.FilePathService;
-import org.simple.sm.common.base.BaseResultDTO;
+import org.simple.sm.common.constant.ConstantPath;
+import org.simple.sm.common.enumeration.ENUM_BASE_RESULT;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -18,11 +19,12 @@ public class FilePathServiceImpl implements FilePathService {
 
     @Override
     public FilePathResDTO filePathSearch(FilePathReqDTO filePathReqDTO) {
+        FilePathResDTO filePathResDTO = new FilePathResDTO();
         //Default root path
         if (StringUtils.isEmpty(filePathReqDTO.getPath())) {
-            filePathReqDTO.setPath("/");
+            filePathReqDTO.setPath(ConstantPath.FILE_PATH_ROOT);
         }
-        ArrayList<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         File directory = new File(filePathReqDTO.getPath());
         if (directory.exists() && directory.isDirectory()) {
             File[] folders = directory.listFiles(File::isDirectory);
@@ -32,8 +34,9 @@ public class FilePathServiceImpl implements FilePathService {
                 }
             }
         } else {
-            log.info("The specified path does not exist or is not a folder.");
+            filePathResDTO.success(ENUM_BASE_RESULT.FILE_PATH_ERR);
         }
-        return FilePathResDTO.builder().paths(list).build();
+        filePathResDTO.setPaths(list);
+        return filePathResDTO;
     }
 }
