@@ -19,5 +19,9 @@ public class BackupManualReqDTO {
      * Backup destination path
      */
     private String targetPath;
+    /**
+     * compressed zip name
+     */
+    private String zipName;
 
 }

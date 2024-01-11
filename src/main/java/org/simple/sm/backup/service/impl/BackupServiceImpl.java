@@ -1,5 +1,8 @@
 package org.simple.sm.backup.service.impl;
 
+import cn.hutool.core.date.DateUnit;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.unit.DataUnit;
 import com.alibaba.fastjson2.JSONObject;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +12,7 @@ import org.simple.sm.backup.dto.res.BackupManualResDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.BackupService;
 import org.simple.sm.backup.service.FilePathService;
+import org.simple.sm.common.constant.ConstantDate;
 import org.simple.sm.common.constant.ConstantField;
 import org.simple.sm.common.constant.ConstantFile;
 import org.simple.sm.common.enumeration.ENUM_BACKUP_TYPE;
@@ -18,6 +22,7 @@ import org.simple.sm.db.sqlite.entity.TBackupHistory;
 import org.simple.sm.db.sqlite.service.TBackupHistoryService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.io.*;
@@ -140,21 +145,26 @@ public class BackupServiceImpl implements BackupService {
      * @throws IOException
      */
     public void compressFiles(BackupManualReqDTO backupManualReqDTO) throws IOException {
-        try (FileOutputStream fos = new FileOutputStream(backupManualReqDTO.getTargetPath());
-             ZipOutputStream zos = new ZipOutputStream(fos)) {
+        //default name
+        String zipName = backupManualReqDTO.getZipName();
+        if(StringUtils.isEmpty(backupManualReqDTO.getZipName())){
+            zipName = String.format("%s%s", DateUtil.date(new Date()).toString(ConstantDate.yyyyMMddHHmmssSSS), ConstantFile.ZIP);
+        }
+        String zipFile = String.format("%s%s",backupManualReqDTO.getTargetPath(),zipName);
 
-            for (String sourceFilePath : backupManualReqDTO.getSourceFiles()) {
-                try (FileInputStream fis = new FileInputStream(sourceFilePath)) {
-                    ZipEntry zipEntry = new ZipEntry(new File(sourceFilePath).getName());
-                    zos.putNextEntry(zipEntry);
-
-                    byte[] buffer = new byte[1024];
-                    int length;
-                    while ((length = fis.read(buffer)) > 0) {
-                        zos.write(buffer, 0, length);
-                    }
-                }
+        try {
+            FileOutputStream fos = new FileOutputStream(zipFile);
+            ZipOutputStream zos = new ZipOutputStream(fos);
+            for (String sourceFile : backupManualReqDTO.getSourceFiles()) {
+                addToZipFile(sourceFile, zos);
             }
+
+            zos.close();
+            fos.close();
+
+            log.info("compression completed! ");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     /**
@@ -214,5 +224,24 @@ public class BackupServiceImpl implements BackupService {
             File file = new File(filePath);
             file.mkdir();
         }
+    }
+
+    private void addToZipFile(String fileName, ZipOutputStream zos) throws IOException {
+        File file = new File(fileName);
+        if (!file.exists()) {
+            throw new FileNotFoundException("file not exist： " + fileName);
+        }
+
+        FileInputStream fis = new FileInputStream(file);
+        ZipEntry zipEntry = new ZipEntry(file.getName());
+        zos.putNextEntry(zipEntry);
+
+        byte[] bytes = new byte[1024];
+        int length;
+        while ((length = fis.read(bytes)) >= 0) {
+            zos.write(bytes, 0, length);
+        }
+
+        fis.close();
     }
 }
