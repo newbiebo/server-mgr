@@ -5,8 +5,11 @@ import com.alibaba.fastjson2.util.JSONObject1O;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
+import org.simple.sm.backup.dto.req.FilePathReqDTO;
 import org.simple.sm.backup.dto.res.BackupManualResDTO;
+import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.BackupService;
+import org.simple.sm.backup.service.FilePathService;
 import org.simple.sm.common.constant.ConstantField;
 import org.simple.sm.common.constant.ConstantFile;
 import org.simple.sm.common.enumeration.ENUM_BACKUP_TYPE;
@@ -36,11 +39,15 @@ public class BackupServiceImpl implements BackupService {
     @Resource
     IdWorker idWorker;
     @Resource
+    FilePathService filePathService;
+    @Resource
     TBackupHistoryService tBackupHistoryService;
 
     @Override
     public BackupManualResDTO backupFiles(BackupManualReqDTO backupManualReqDTO) {
         log.info("backupFiles start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
+        this.checkFilePathExist(backupManualReqDTO.getTargetPath());
+
         BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         //nio copy file
         Path destinationFolder = Paths.get(backupManualReqDTO.getTargetPath());
