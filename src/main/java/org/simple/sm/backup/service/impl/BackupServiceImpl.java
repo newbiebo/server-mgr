@@ -1,7 +1,6 @@
 package org.simple.sm.backup.service.impl;
 
 import com.alibaba.fastjson2.JSONObject;
-import com.alibaba.fastjson2.util.JSONObject1O;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
@@ -26,9 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Collections;
 import java.util.Date;
-import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -107,6 +104,12 @@ public class BackupServiceImpl implements BackupService {
         return backupManualResDTO;
     }
 
+    /**
+     * recursive backup all files in the folder
+     * @param sourcePath
+     * @param targetPath
+     * @throws IOException
+     */
     private void recursiveBackup(String sourcePath, String targetPath) throws IOException {
         File sourceDirectory = new File(sourcePath);
         File[] files = sourceDirectory.listFiles();
@@ -130,7 +133,11 @@ public class BackupServiceImpl implements BackupService {
             }
         }
     }
-
+    /**
+     * compress files and put zip to target path
+     * @param backupManualReqDTO
+     * @throws IOException
+     */
     public void compressFiles(BackupManualReqDTO backupManualReqDTO) throws IOException {
         try (FileOutputStream fos = new FileOutputStream(backupManualReqDTO.getTargetPath());
              ZipOutputStream zos = new ZipOutputStream(fos)) {
@@ -149,6 +156,11 @@ public class BackupServiceImpl implements BackupService {
             }
         }
     }
+    /**
+     * compress folder and put zip to target path
+     * @param backupManualReqDTO
+     * @throws IOException
+     */
     private void compressFolder(BackupManualReqDTO backupManualReqDTO) throws IOException {
         File sourceFolder = new File(backupManualReqDTO.getSourcePath());
         File targetFolder = new File(backupManualReqDTO.getTargetPath());
@@ -191,6 +203,10 @@ public class BackupServiceImpl implements BackupService {
             }
         }
     }
+    /**
+     * insert data into t_backup_history
+     * @param backupManualReqDTO
+     */
     private void insertBackupHistory(BackupManualReqDTO backupManualReqDTO){
         BaseMapper<TBackupHistory> baseMapper = tBackupHistoryService.getBaseMapper();
         TBackupHistory tBackupHistory = new TBackupHistory();
@@ -202,5 +218,17 @@ public class BackupServiceImpl implements BackupService {
         tBackupHistory.setGmtCreate(new Date());
         tBackupHistory.setGmtModified(new Date());
         baseMapper.insert(tBackupHistory);
+    }
+    /**
+     * check target file path exist,if not create
+     * @param filePath  the path to be detected
+     */
+    private void checkFilePathExist(String filePath){
+        FilePathResDTO filePathResDTO = filePathService.filePathSearch(FilePathReqDTO.builder().path(filePath).build());
+        if(ENUM_BASE_RESULT.FILE_PATH_ERR.getCode().equals(filePathResDTO.getResultCode())){
+            //does not exist,create folder
+            File file = new File(filePath);
+            file.mkdir();
+        }
     }
 }
