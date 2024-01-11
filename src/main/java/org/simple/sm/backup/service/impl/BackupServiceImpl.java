@@ -44,7 +44,6 @@ public class BackupServiceImpl implements BackupService {
     public BackupManualResDTO backupFiles(BackupManualReqDTO backupManualReqDTO) {
         log.info("backupFiles start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
         this.checkFilePathExist(backupManualReqDTO.getTargetPath());
-
         BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         //nio copy file
         Path destinationFolder = Paths.get(backupManualReqDTO.getTargetPath());
@@ -70,8 +69,9 @@ public class BackupServiceImpl implements BackupService {
     public BackupManualResDTO backupPath(BackupManualReqDTO backupManualReqDTO) {
         log.info("backupPath start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
         BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
+        this.checkFilePathExist(backupManualReqDTO.getTargetPath());
         try {
-            //Recursive backup
+            //recursive backup
             this.recursiveBackup(backupManualReqDTO.getSourcePath(), backupManualReqDTO.getTargetPath());
             //persistent data
             this.insertBackupHistory(backupManualReqDTO);
@@ -90,8 +90,9 @@ public class BackupServiceImpl implements BackupService {
         BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         try {
             // backup after compress
-            if(null != backupManualReqDTO.getTargetPath()){
-              this.compressFolder(backupManualReqDTO);
+            this.checkFilePathExist(backupManualReqDTO.getTargetPath());
+            if(!StringUtils.isEmpty(backupManualReqDTO.getSourcePath())){
+                this.compressFolder(backupManualReqDTO);
             } else if (!CollectionUtils.isEmpty(backupManualReqDTO.getSourceFiles())) {
                 this.compressFiles(backupManualReqDTO);
             }
@@ -162,45 +163,28 @@ public class BackupServiceImpl implements BackupService {
      * @throws IOException
      */
     private void compressFolder(BackupManualReqDTO backupManualReqDTO) throws IOException {
-        File sourceFolder = new File(backupManualReqDTO.getSourcePath());
-        File targetFolder = new File(backupManualReqDTO.getTargetPath());
-
-        if (!targetFolder.exists()) {
-            targetFolder.mkdirs();
+        //default name
+        String zipName = backupManualReqDTO.getZipName();
+        if(StringUtils.isEmpty(backupManualReqDTO.getZipName())){
+            zipName = String.format("%s%s", DateUtil.date(new Date()).toString(ConstantDate.yyyyMMddHHmmssSSS), ConstantFile.ZIP);
         }
+        Path sourcePath = Paths.get(backupManualReqDTO.getSourcePath());
+        Path outputPath = Paths.get(backupManualReqDTO.getTargetPath(), zipName);
 
-        for (File file : sourceFolder.listFiles()) {
-            if (file.isFile()) {
-                FileInputStream fis = null;
-                FileOutputStream fos = null;
-                ZipOutputStream zos = null;
+        try (FileOutputStream fos = new FileOutputStream(outputPath.toFile());
+             ZipOutputStream zos = new ZipOutputStream(fos)) {
 
+            Files.walk(sourcePath).filter(path -> !Files.isDirectory(path)).forEach(path -> {
+                ZipEntry zipEntry = new ZipEntry(sourcePath.relativize(path).toString());
                 try {
-                    fis = new FileInputStream(file);
-                    fos = new FileOutputStream(new File(targetFolder, file.getName() + ConstantFile.ZIP));
-                    zos = new ZipOutputStream(fos);
-
-                    ZipEntry zipEntry = new ZipEntry(file.getName());
                     zos.putNextEntry(zipEntry);
-
-                    byte[] buffer = new byte[1024];
-                    int length;
-                    while ((length = fis.read(buffer)) > 0) {
-                        zos.write(buffer, 0, length);
-                    }
-                } finally {
-                    if (zos != null) {
-                        zos.closeEntry();
-                        zos.close();
-                    }
-                    if (fis != null) {
-                        fis.close();
-                    }
-                    if (fos != null) {
-                        fos.close();
-                    }
+                    Files.copy(path, zos);
+                    zos.closeEntry();
+                } catch (IOException e) {
+                    log.error("Error while adding file to zip: {}", path);
+                    e.printStackTrace();
                 }
-            }
+            });
         }
     }
     /**
