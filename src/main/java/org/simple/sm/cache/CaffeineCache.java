@@ -1,4 +1,4 @@
-package org.simple.sm.quartz.cache;
+package org.simple.sm.cache;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;

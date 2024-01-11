@@ -6,5 +6,6 @@ import lombok.Getter;
 public class ConstantFile {
 
     public static final String ZIP = ".zip";
+    public static String ROOT_PATH = "/";
 
 }

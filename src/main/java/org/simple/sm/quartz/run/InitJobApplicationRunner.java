@@ -53,19 +53,18 @@ public class InitJobApplicationRunner implements ApplicationRunner {
     private List<ExecutableJob> getJobList() {
 
 //        List<ExecutableBackupJob> executableBackupJobs = zJobService.getBuckupJobList();
-//        List<ExecutableBarkJob> executableBarkJobs = zJobService.getBarkJobList();
+        List<ExecutableBarkJob> executableBarkJobs = zJobService.getBarkJobList();
         List<ExecutableJob> newExecutableJobs = new ArrayList<>();
-//        executableBarkJobs.forEach(e->
-//        {
-//            ExecutableJob  executableJob = new ExecutableJob();
-//            executableJob.setJobNo(e.getJobNo());
-//            executableJob.setJobName(e.getJobNo());
-//            executableJob.setJobGroup(e.getJobGroup());
-//            executableJob.setExpression(e.getExpression());
-//            executableJob.setType(e.getType());
-//            newExecutableJobs.add(executableJob);
-//
-//        });
+        executableBarkJobs.forEach(e->
+        {
+            ExecutableJob  executableJob = new ExecutableJob();
+            executableJob.setJobNo(e.getJobNo());
+            executableJob.setJobName(e.getJobNo());
+            executableJob.setJobGroup(e.getJobGroup());
+            executableJob.setExpression(e.getExpression());
+            executableJob.setType(e.getType());
+            newExecutableJobs.add(executableJob);
+        });
 //        executableBackupJobs.forEach(e->
 //        {
 //            ExecutableJob  executableJob = new ExecutableJob();

@@ -34,12 +34,15 @@ env:
     version: 0.1.1
 logging:
   config: classpath:logback-spring.xml
-
+# system
+sys:
+  id-worker:
+    worker-id: 0
+    data-center-id: 0
 # swagger2
 swagger2:
   ui:
     enable: true
-
 #mail
 mail:
   receivers: 1186644190wxb@gmail.com

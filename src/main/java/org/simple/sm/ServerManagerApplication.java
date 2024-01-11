@@ -17,7 +17,6 @@ public class ServerManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServerManagerApplication.class, args);
         System.out.println(
-                "____________________________________________________________\n" +
                 "      __                                  _   _             \n" +
                 "    /    )                                /  /|             \n" +
                 "----\\--------__---)__---------__---)__---/| /-|----__---)__-\n" +

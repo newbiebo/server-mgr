@@ -3,6 +3,9 @@ package org.simple.sm.notification.bark.service.impl;
 import cn.hutool.http.HttpUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.simple.sm.common.constant.ConstantField;
+import org.simple.sm.common.constant.ConstantNet;
+import org.simple.sm.common.constant.ConstantSymbol;
 import org.simple.sm.notification.bark.service.BarkService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -34,17 +37,18 @@ public class BarkServiceImpl implements BarkService {
     }
 
     private void doPush(String group, String title, String msg, String url){
-        if (StringUtils.isEmpty(group)) {group = "default";}
-        if (StringUtils.isEmpty(title)) {title = "new msg";}
+        log.info("doPush start! parameter:{}",msg);
+        if (StringUtils.isEmpty(group)) {group = ConstantField.DEFAULT;}
+        //set default tittle
+        if (StringUtils.isEmpty(title)) {title = ConstantField.NEW_MSG;}
         for (String s : keys) {
-            log.debug("PushService.push(),Enter as:{}", msg);
-            StringBuilder append = new StringBuilder("http://")
+            StringBuilder append = new StringBuilder(ConstantNet.NET_HTTP)
                     .append(barkServerUrl)
-                    .append("/")
+                    .append(ConstantSymbol.SINGLE_DIAGONAL_LINE)
                     .append(s)
-                    .append("/")
+                    .append(ConstantSymbol.SINGLE_DIAGONAL_LINE)
                     .append(title)
-                    .append("/")
+                    .append(ConstantSymbol.SINGLE_DIAGONAL_LINE)
                     .append(msg);
             if (!StringUtils.isEmpty(group)) {append = append.append("?group=").append(group);}
             if (!StringUtils.isEmpty(url)) {append = append.append("?url=").append(url);}

@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.FilePathReqDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.FilePathService;
-import org.simple.sm.common.constant.ConstantPath;
+import org.simple.sm.common.constant.ConstantSymbol;
 import org.simple.sm.common.enumeration.ENUM_BASE_RESULT;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -22,7 +22,7 @@ public class FilePathServiceImpl implements FilePathService {
         FilePathResDTO filePathResDTO = new FilePathResDTO();
         //Default root path
         if (StringUtils.isEmpty(filePathReqDTO.getPath())) {
-            filePathReqDTO.setPath(ConstantPath.FILE_PATH_ROOT);
+            filePathReqDTO.setPath(ConstantSymbol.SINGLE_DIAGONAL_LINE);
         }
         List<String> list = new ArrayList<>();
         File directory = new File(filePathReqDTO.getPath());

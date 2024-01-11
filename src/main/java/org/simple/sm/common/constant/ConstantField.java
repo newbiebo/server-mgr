@@ -8,5 +8,12 @@ import lombok.Getter;
 @Getter
 public class ConstantField {
 
+    /**
+     * default value
+     */
     public static final String DEFAULT = "default";
+    /**
+     * bark tittle default value
+     */
+    public static final String NEW_MSG = "new msg";
 }
