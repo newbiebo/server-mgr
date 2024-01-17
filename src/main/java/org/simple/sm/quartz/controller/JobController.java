@@ -1,7 +1,8 @@
 package org.simple.sm.quartz.controller;
 
 import org.simple.sm.common.base.BaseResultDTO;
-import org.simple.sm.quartz.dto.req.JobReqDTO;
+import org.simple.sm.quartz.dto.req.*;
+import org.simple.sm.quartz.dto.res.GetJobsResDTO;
 import org.simple.sm.quartz.dto.res.JobResDTO;
 import org.simple.sm.quartz.service.JobService;
 import org.springframework.http.HttpStatus;
@@ -26,41 +27,27 @@ public class JobController {
     JobService jobService;
 
     @PostMapping("/save_job")
-    public ResponseEntity<JobResDTO> addJob(@RequestBody JobReqDTO jobReqDTO) {
-        JobResDTO jobResDTO = jobService.addJob(jobReqDTO);
-        return new ResponseEntity<>(jobResDTO, HttpStatus.OK);
+    public BaseResultDTO<?> addJob(@RequestBody JobReqDTO jobReqDTO) {
+        return jobService.addJob(jobReqDTO);
     }
     /**
      * Job query interface
-     * @param jobReqDTO
+     * @param getJobsReqDTO
      * @return
      */
     @PostMapping("/get_jobs")
-    public ResponseEntity<List<JobResDTO>> getJobs(@RequestBody JobReqDTO jobReqDTO) {
-        return new ResponseEntity<>(jobService.getJobs(jobReqDTO), HttpStatus.OK);
+    public BaseResultDTO<GetJobsResDTO> getJobs(@RequestBody GetJobsReqDTO getJobsReqDTO) {
+        return jobService.getJobs(getJobsReqDTO);
     }
     /**
      * job修改接口
-     * @param jobReqDTO
+     * @param updateJobReqDTO
      * @return
      * @throws Exception
      */
     @PostMapping("/update_job")
-    public ResponseEntity<BaseResultDTO> updateJob(@RequestBody JobReqDTO jobReqDTO) {
-        BaseResultDTO baseResultDTO = new BaseResultDTO();
-        if (StringUtils.isEmpty(jobReqDTO.getJobNo())) {
-            baseResultDTO.setResultCode("0");
-            baseResultDTO.setResultMessage(" No item to modify specified!");
-            return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
-        } else if (StringUtils.isEmpty(jobReqDTO.getJobName())
-                && StringUtils.isEmpty(jobReqDTO.getExpression())
-                && StringUtils.isEmpty(jobReqDTO.getJobGroup())) {
-            baseResultDTO.setResultCode("0");
-            baseResultDTO.setResultMessage(" The current content has not been modified!");
-            return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
-        }
-        jobService.updateJob(jobReqDTO);
-        return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
+    public BaseResultDTO<?> updateJob(@RequestBody UpdateJobReqDTO updateJobReqDTO) {
+        return jobService.updateJob(updateJobReqDTO);
     }
     /**
      * job删除接口
@@ -69,15 +56,8 @@ public class JobController {
      * @throws Exception
      */
     @PostMapping("/remove_job")
-    public ResponseEntity<BaseResultDTO> removeJob(@RequestBody JobReqDTO jobReqDTO) {
-        BaseResultDTO baseResultDTO = new BaseResultDTO();
-        if (StringUtils.isEmpty(jobReqDTO.getJobNo())) {
-            baseResultDTO.setResultCode("0");
-            baseResultDTO.setResultMessage(" The input parameter is incorrect, please check and input! ");
-            return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
-        }
-        jobService.removeJob(jobReqDTO);
-        return new ResponseEntity<>(baseResultDTO, HttpStatus.OK);
+    public BaseResultDTO<?> removeJob(@RequestBody JobReqDTO jobReqDTO) {
+        return jobService.removeJob(jobReqDTO);
     }
 
 }

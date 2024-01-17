@@ -5,7 +5,7 @@ import lombok.Data;
 import org.simple.sm.common.base.BaseResultDTO;
 
 @Data
-public class JobResDTO extends BaseResultDTO {
+public class JobResDTO {
     private String jobNo;
     private String jobName;
     private String jobGroup;

@@ -1,6 +1,10 @@
 package org.simple.sm.quartz.service;
 
+import org.simple.sm.common.base.BaseResultDTO;
+import org.simple.sm.quartz.dto.req.GetJobsReqDTO;
 import org.simple.sm.quartz.dto.req.JobReqDTO;
+import org.simple.sm.quartz.dto.req.UpdateJobReqDTO;
+import org.simple.sm.quartz.dto.res.GetJobsResDTO;
 import org.simple.sm.quartz.dto.res.JobResDTO;
 
 import java.util.List;
@@ -10,24 +14,24 @@ public interface JobService {
      * add job
      * @param jobReqDTO
      */
-    JobResDTO addJob(JobReqDTO jobReqDTO);
+    BaseResultDTO<?> addJob(JobReqDTO jobReqDTO);
 
     /**
-     * query jobs
-     * @param jobReqDTO
+     * query job list
+     * @param getJobsReqDTO
      * @return
      */
-    List<JobResDTO>  getJobs(JobReqDTO jobReqDTO);
+    BaseResultDTO<GetJobsResDTO>  getJobs(GetJobsReqDTO getJobsReqDTO);
 
     /**
      * update job
-     * @param jobReqDTO
+     * @param updateJobReqDTO
      */
-    void updateJob(JobReqDTO jobReqDTO);
+    BaseResultDTO<?> updateJob(UpdateJobReqDTO updateJobReqDTO);
 
     /**
      * remove job
      * @param jobReqDTO
      */
-    void removeJob(JobReqDTO jobReqDTO);
+    BaseResultDTO<?> removeJob(JobReqDTO jobReqDTO);
 }

@@ -1,14 +1,9 @@
 package org.simple.sm.quartz.dto.req;
 
-import lombok.Builder;
 import lombok.Data;
-import org.simple.sm.common.base.BaseResultDTO;
 
-/**
- *
- */
 @Data
-public class JobReqDTO {
+public class UpdateJobReqDTO {
     private String jobNo;
     private String jobName;
     private String jobGroup;

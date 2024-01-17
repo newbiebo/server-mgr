@@ -6,7 +6,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
 import org.simple.sm.backup.dto.req.FilePathReqDTO;
-import org.simple.sm.backup.dto.res.BackupManualResDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.BackupService;
 import org.simple.sm.backup.service.FilePathService;

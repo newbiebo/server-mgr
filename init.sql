@@ -9,9 +9,9 @@ CREATE TABLE "t_quartz_info"
     job_type     text    not null,--job类型
     expression   text    not null,--cron表达式
     status       text    not null,--任务状态
-    is_delete    integer not null,--逻辑删除
-    gmt_create   TEXT    not null,--创建时间
-    gmt_modified TEXT    not null --修改时间
+    gmt_create   datetime    not null,--创建时间
+    gmt_modified datetime    not null,--修改时间
+    is_delete    integer not null--逻辑删除
 );
 --bark推送详情表
 CREATE TABLE "t_bark_info"
@@ -23,9 +23,9 @@ CREATE TABLE "t_bark_info"
     client       text    not null,--推送设备，ENUM_USER_CLIENT
     url          text    not null,--推送url
     type         text    not null,--推送类型，参考枚举：ENUM_BARK_TYPE
-    is_delete    integer not null,--逻辑删除
-    gmt_create   TEXT    not null,--创建时间
-    gmt_modified TEXT    not null --修改时间
+    gmt_create   datetime    not null,--创建时间
+    gmt_modified datetime    not null,--修改时间
+    is_delete    integer not null--逻辑删除
 );
 --备份详情表
 CREATE TABLE "t_backup_info"
@@ -36,9 +36,9 @@ CREATE TABLE "t_backup_info"
     backup_no     text    not null,--备份唯一id
     resource_path text    not null,--源路径，文件或文件路径
     target_path   text    not null,--目标路径
-    is_delete     integer not null,--逻辑删除
-    gmt_create    TEXT    not null,--创建时间
-    gmt_modified  TEXT    not null --修改时间
+    gmt_create    datetime    not null,--创建时间
+    gmt_modified  datetime    not null,--修改时间
+    is_delete     integer not null--逻辑删除
 );
 --任务处理历史表
 CREATE TABLE "t_quartz_history"
@@ -48,9 +48,9 @@ CREATE TABLE "t_quartz_history"
     job_no       text    not null,--任务号
     behavior_no  text    not null,--行为no
     behavior     text    not null,--行为，参考枚举：ENUM_QUARTZ_BEHAVIOR
-    is_delete    integer not null,--逻辑删除
-    gmt_create   TEXT    not null,--创建时间
-    gmt_modified TEXT    not null --修改时间
+    gmt_create   datetime    not null,--创建时间
+    gmt_modified datetime    not null,--修改时间
+    is_delete    integer not null--逻辑删除
 );
 CREATE TABLE "t_backup_history"
 (
@@ -61,7 +61,7 @@ CREATE TABLE "t_backup_history"
     backup_history_no text    not null,--备份历史唯一id
     resource_path     text    not null,--源路径，文件或文件路径
     target_path       text    not null,--目标路径
-    is_delete         integer DEFAULT 0,--逻辑删除
     gmt_create        TEXT    not null,--创建时间
-    gmt_modified      TEXT    not null  --修改时间
+    gmt_modified      TEXT    not null,--修改时间
+    is_delete         integer DEFAULT 0--逻辑删除
 );
