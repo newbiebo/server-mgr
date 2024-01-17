@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-28
+ * @since 2024-01-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -35,14 +35,14 @@ public class TBackupInfo implements Serializable {
 
     private String targetPath;
 
-    @TableLogic
-    private Integer isDelete;
-
       @TableField(fill = FieldFill.INSERT)
     private Date gmtCreate;
 
       @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date gmtModified;
+
+    @TableLogic
+    private Integer isDelete;
 
 
 }

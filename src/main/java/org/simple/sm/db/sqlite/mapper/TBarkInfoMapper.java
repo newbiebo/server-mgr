@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-28
+ * @since 2024-01-17
  */
 public interface TBarkInfoMapper extends BaseMapper<TBarkInfo> {
 

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * </p>
  *
  * @author newbiebo
- * @since 2023-06-28
+ * @since 2024-01-17
  */
 @Service
 public class TBarkInfoServiceImpl extends ServiceImpl<TBarkInfoMapper, TBarkInfo> implements TBarkInfoService {
