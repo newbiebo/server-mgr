@@ -10,6 +10,7 @@ import org.simple.sm.backup.dto.res.BackupManualResDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.BackupService;
 import org.simple.sm.backup.service.FilePathService;
+import org.simple.sm.common.base.BaseResultDTO;
 import org.simple.sm.common.constant.ConstantDate;
 import org.simple.sm.common.constant.ConstantField;
 import org.simple.sm.common.constant.ConstantFile;
@@ -44,10 +45,10 @@ public class BackupServiceImpl implements BackupService {
     TBackupHistoryService tBackupHistoryService;
 
     @Override
-    public BackupManualResDTO backupFiles(BackupManualReqDTO backupManualReqDTO) {
+    public BaseResultDTO<?> backupFiles(BackupManualReqDTO backupManualReqDTO) {
         log.info("backupFiles start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
+        BaseResultDTO<?> baseResultDTO = new BaseResultDTO<>();
         this.checkFilePathExist(backupManualReqDTO.getTargetPath());
-        BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         //nio copy file
         Path destinationFolder = Paths.get(backupManualReqDTO.getTargetPath());
         backupManualReqDTO.getSourceFiles().forEach(m->{
@@ -60,12 +61,12 @@ public class BackupServiceImpl implements BackupService {
                 this.insertBackupHistory(backupManualReqDTO);
             } catch (IOException e) {
                 e.printStackTrace();
-                backupManualResDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
+                baseResultDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
             }
         });
-        backupManualResDTO.success(ENUM_BASE_RESULT.SUCCESS);
+        baseResultDTO.success();
         log.info("backupFiles end!");
-        return backupManualResDTO;
+        return baseResultDTO;
     }
 
     @Override
@@ -216,8 +217,10 @@ public class BackupServiceImpl implements BackupService {
      * @param filePath  the path to be detected
      */
     private void checkFilePathExist(String filePath){
-        FilePathResDTO filePathResDTO = filePathService.filePathSearch(FilePathReqDTO.builder().path(filePath).build());
-        if(ENUM_BASE_RESULT.FILE_PATH_ERR.getCode().equals(filePathResDTO.getResultCode())){
+        FilePathReqDTO filePathReqDTO = new FilePathReqDTO();
+        filePathReqDTO.setPath(filePath);
+        BaseResultDTO<FilePathResDTO> filePathResDTOBaseResultDTO = filePathService.filePathSearch(filePathReqDTO);
+        if(ENUM_BASE_RESULT.FILE_PATH_ERR.getCode().equals(filePathResDTOBaseResultDTO.getResultCode())){
             //does not exist,create folder
             File file = new File(filePath);
             file.mkdir();

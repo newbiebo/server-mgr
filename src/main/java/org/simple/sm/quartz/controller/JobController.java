@@ -26,7 +26,7 @@ public class JobController {
     JobService jobService;
 
     @PostMapping("/save_job")
-    public ResponseEntity<JobResDTO> addJob(@RequestBody JobReqDTO jobReqDTO) throws Exception {
+    public ResponseEntity<JobResDTO> addJob(@RequestBody JobReqDTO jobReqDTO) {
         JobResDTO jobResDTO = jobService.addJob(jobReqDTO);
         return new ResponseEntity<>(jobResDTO, HttpStatus.OK);
     }

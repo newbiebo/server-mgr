@@ -8,8 +8,7 @@ import org.simple.sm.common.base.BaseResultDTO;
  *
  */
 @Data
-@Builder
-public class JobReqDTO extends BaseResultDTO {
+public class JobReqDTO {
     private String jobNo;
     private String jobName;
     private String jobGroup;

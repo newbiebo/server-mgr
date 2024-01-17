@@ -34,9 +34,10 @@ public class FilePathServiceImpl implements FilePathService {
                 }
             }
         } else {
-            filePathResDTO.success(ENUM_BASE_RESULT.FILE_PATH_ERR);
+            resultDTO.failure(ENUM_BASE_RESULT.FILE_PATH_ERR);
         }
         filePathResDTO.setPaths(list);
-        return filePathResDTO;
+        resultDTO.success(filePathResDTO);
+        return resultDTO;
     }
 }

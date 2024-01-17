@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @ServletComponentScan
 @SpringBootApplication
-@MapperScan("org/simple/sm/db/sqlite/mapper")
+@MapperScan("org.simple.sm.db.sqlite.mapper")
 public class ServerManagerApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServerManagerApplication.class, args);

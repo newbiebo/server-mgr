@@ -29,8 +29,8 @@ public class ZJobServiceImpl implements ZJobService {
     }
     @Override
     public List<ExecutableBarkJob> getBarkJobList() {
-        List<ExecutableBarkJob> executableBarkJobs = zJobMapper.getBarkJobList();
-        executableBarkJobs.forEach(e->e.setType(ENUM_JOB_NAME.BACKUP_JOB.getValue()));
-        return executableBarkJobs;
+        List<ExecutableBarkJob> barkJobList = zJobMapper.getBarkJobList();
+        barkJobList.forEach(e->e.setType(ENUM_JOB_NAME.BACKUP_JOB.getValue()));
+        return barkJobList;
     }
 }

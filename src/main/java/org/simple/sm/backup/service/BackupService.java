@@ -2,6 +2,7 @@ package org.simple.sm.backup.service;
 
 import org.simple.sm.backup.dto.req.BackupManualReqDTO;
 import org.simple.sm.backup.dto.res.BackupManualResDTO;
+import org.simple.sm.common.base.BaseResultDTO;
 
 /**
  * backupService
@@ -12,7 +13,7 @@ public interface BackupService {
      * @param backupManualReqDTO
      * @return
      */
-    BackupManualResDTO backupFiles(BackupManualReqDTO backupManualReqDTO);
+    BaseResultDTO<?> backupFiles(BackupManualReqDTO backupManualReqDTO);
 
     /**
      * Backup all files in the path
