@@ -32,6 +32,18 @@ public class BaseResultDTO<T> implements Serializable {
     public BaseResultDTO() {
     }
 
+    public void success() {
+        this.setStatus(1);
+        this.setResultCode(ENUM_BASE_RESULT.SUCCESS.getCode());
+        this.setResultMessage(ENUM_BASE_RESULT.SUCCESS.getMessage());
+    }
+
+    public void success(T data) {
+        this.setStatus(1);
+        this.setResultCode(ENUM_BASE_RESULT.SUCCESS.getCode());
+        this.setResultMessage(ENUM_BASE_RESULT.SUCCESS.getMessage());
+        this.setData(data);
+    }
 
     public void failure(ENUM_BASE_RESULT baseResult) {
         this.setStatus(-1);
@@ -42,8 +54,10 @@ public class BaseResultDTO<T> implements Serializable {
     @Override
     public String toString() {
         return "BaseResultDTO{" +
-                "resultCode='" + resultCode + '\'' +
+                "status=" + status +
+                ", resultCode='" + resultCode + '\'' +
                 ", resultMessage='" + resultMessage + '\'' +
+                ", data=" + JSONObject.toJSONString(data) +
                 '}';
     }
 }

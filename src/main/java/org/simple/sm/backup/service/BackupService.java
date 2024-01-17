@@ -20,13 +20,13 @@ public interface BackupService {
      * @param backupManualReqDTO
      * @return
      */
-    BackupManualResDTO backupPath(BackupManualReqDTO backupManualReqDTO);
+    BaseResultDTO<?> backupPath(BackupManualReqDTO backupManualReqDTO);
 
     /**
      *  Compress before backup
      * @param backupManualReqDTO
      * @return
      */
-    BackupManualResDTO backupAfterCompress(BackupManualReqDTO backupManualReqDTO);
+    BaseResultDTO<?> backupAfterCompress(BackupManualReqDTO backupManualReqDTO);
 
 }

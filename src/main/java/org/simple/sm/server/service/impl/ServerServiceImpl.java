@@ -1,6 +1,7 @@
 package org.simple.sm.server.service.impl;
 
 import cn.hutool.core.date.DateUtil;
+import org.simple.sm.common.base.BaseResultDTO;
 import org.simple.sm.server.dto.res.ServerInfoResDTO;
 import org.simple.sm.server.service.ServerService;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,13 +17,15 @@ public class ServerServiceImpl implements ServerService {
     private String version;
 
     @Override
-    public ServerInfoResDTO getServerInfo() {
+    public BaseResultDTO<ServerInfoResDTO> getServerInfo() {
+        BaseResultDTO baseResultDTO = new BaseResultDTO();
         ServerInfoResDTO serverInfoResDTO = new ServerInfoResDTO();
         serverInfoResDTO.setVersion(version);
         // get system run time
         RuntimeMXBean runtimeMXBean = ManagementFactory.getRuntimeMXBean();
         long uptime = runtimeMXBean.getUptime();
         serverInfoResDTO.setRunTime(DateUtil.secondToTime((int) uptime / 1000));
-        return serverInfoResDTO;
+        baseResultDTO.success(serverInfoResDTO);
+        return baseResultDTO;
     }
 }

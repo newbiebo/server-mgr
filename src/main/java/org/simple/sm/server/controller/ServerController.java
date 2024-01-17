@@ -1,6 +1,7 @@
 package org.simple.sm.server.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.simple.sm.common.base.BaseResultDTO;
 import org.simple.sm.server.dto.res.ServerInfoResDTO;
 import org.simple.sm.server.service.ServerService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ public class ServerController {
     ServerService serverService;
 
     @GetMapping("get_server_info")
-    public ServerInfoResDTO getServerInfo(){
+    public BaseResultDTO<ServerInfoResDTO> getServerInfo(){
         return serverService.getServerInfo();
     }
 }

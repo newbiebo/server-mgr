@@ -22,6 +22,10 @@ public class QuartzServiceImpl implements QuartzService {
     private Scheduler scheduler;
 
     @Override
+    public void addJob() {
+    }
+
+    @Override
     public void startJob(String taskCode, String taskAnme, String cron, String jobGroup,
                          String className) throws Exception {
         Class<Job> jobClass = null;

@@ -26,13 +26,13 @@ public class BackupManualController {
     }
 
     @PostMapping("/backupPath")
-    public ResponseEntity<BackupManualResDTO> backupPath(@RequestBody BackupManualReqDTO backupManualReqDTO){
-        return new ResponseEntity<>(backupService.backupPath(backupManualReqDTO), HttpStatus.OK);
+    public BaseResultDTO<?> backupPath(@RequestBody BackupManualReqDTO backupManualReqDTO){
+        return backupService.backupPath(backupManualReqDTO);
 
     }
 
     @PostMapping("/backupAfterCompress")
-    public ResponseEntity<BackupManualResDTO> backupAfterCompress(@RequestBody BackupManualReqDTO backupManualReqDTO){
-        return new ResponseEntity<>(backupService.backupAfterCompress(backupManualReqDTO), HttpStatus.OK);
+    public BaseResultDTO<?> backupAfterCompress(@RequestBody BackupManualReqDTO backupManualReqDTO){
+        return backupService.backupAfterCompress(backupManualReqDTO);
     }
 }

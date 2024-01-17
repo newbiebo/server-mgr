@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Push title job
+ * msg push
  * @author newbiebo
  */
 @Slf4j

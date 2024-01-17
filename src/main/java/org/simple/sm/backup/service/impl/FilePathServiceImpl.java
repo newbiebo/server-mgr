@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.simple.sm.backup.dto.req.FilePathReqDTO;
 import org.simple.sm.backup.dto.res.FilePathResDTO;
 import org.simple.sm.backup.service.FilePathService;
+import org.simple.sm.common.base.BaseResultDTO;
 import org.simple.sm.common.constant.ConstantSymbol;
 import org.simple.sm.common.enumeration.ENUM_BASE_RESULT;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,8 @@ import java.util.List;
 public class FilePathServiceImpl implements FilePathService {
 
     @Override
-    public FilePathResDTO filePathSearch(FilePathReqDTO filePathReqDTO) {
+    public BaseResultDTO<FilePathResDTO> filePathSearch(FilePathReqDTO filePathReqDTO) {
+        BaseResultDTO<FilePathResDTO> resultDTO = new BaseResultDTO<>();
         FilePathResDTO filePathResDTO = new FilePathResDTO();
         //Default root path
         if (StringUtils.isEmpty(filePathReqDTO.getPath())) {

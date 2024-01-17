@@ -70,9 +70,9 @@ public class BackupServiceImpl implements BackupService {
     }
 
     @Override
-    public BackupManualResDTO backupPath(BackupManualReqDTO backupManualReqDTO) {
+    public BaseResultDTO<?> backupPath(BackupManualReqDTO backupManualReqDTO) {
+        BaseResultDTO resultDTO = new BaseResultDTO<>();
         log.info("backupPath start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
-        BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         this.checkFilePathExist(backupManualReqDTO.getTargetPath());
         try {
             //recursive backup
@@ -81,17 +81,17 @@ public class BackupServiceImpl implements BackupService {
             this.insertBackupHistory(backupManualReqDTO);
         } catch (IOException e) {
             e.printStackTrace();
-            backupManualResDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
+            resultDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
         }
-        backupManualResDTO.success(ENUM_BASE_RESULT.SUCCESS);
+        resultDTO.success();
         log.info("backupPath end!");
-        return backupManualResDTO;
+        return resultDTO;
     }
 
     @Override
-    public BackupManualResDTO backupAfterCompress(BackupManualReqDTO backupManualReqDTO) {
+    public BaseResultDTO<?> backupAfterCompress(BackupManualReqDTO backupManualReqDTO) {
+        BaseResultDTO resultDTO = new BaseResultDTO<>();
         log.info("backupAfterCompress start! parameter：{}", JSONObject.toJSONString(backupManualReqDTO));
-        BackupManualResDTO backupManualResDTO = new BackupManualResDTO();
         try {
             // backup after compress
             this.checkFilePathExist(backupManualReqDTO.getTargetPath());
@@ -102,11 +102,11 @@ public class BackupServiceImpl implements BackupService {
             }
         } catch (IOException e) {
             e.printStackTrace();
-            backupManualResDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
+            resultDTO.failure(ENUM_BASE_RESULT.FILE_OPERATE_ERR);
         }
-        backupManualResDTO.success(ENUM_BASE_RESULT.SUCCESS);
+        resultDTO.success();
         log.info("backupAfterCompress end");
-        return backupManualResDTO;
+        return resultDTO;
     }
 
     /**

@@ -6,6 +6,7 @@ CREATE TABLE "t_quartz_info"
     job_no       text    not null,--job号
     job_name     text    not null,--job名称
     job_group    text    not null,--job组
+    job_type     text    not null,--job类型
     expression   text    not null,--cron表达式
     status       text    not null,--任务状态
     is_delete    integer not null,--逻辑删除

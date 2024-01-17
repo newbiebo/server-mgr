@@ -7,11 +7,27 @@ import java.util.List;
 
 public interface JobService {
     /**
-     * 添加任务
+     * add job
      * @param jobReqDTO
      */
     JobResDTO addJob(JobReqDTO jobReqDTO);
+
+    /**
+     * query jobs
+     * @param jobReqDTO
+     * @return
+     */
     List<JobResDTO>  getJobs(JobReqDTO jobReqDTO);
+
+    /**
+     * update job
+     * @param jobReqDTO
+     */
     void updateJob(JobReqDTO jobReqDTO);
+
+    /**
+     * remove job
+     * @param jobReqDTO
+     */
     void removeJob(JobReqDTO jobReqDTO);
 }

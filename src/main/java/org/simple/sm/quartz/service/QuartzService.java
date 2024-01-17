@@ -5,6 +5,7 @@ package org.simple.sm.quartz.service;
  * Execute scheduled tasks
  */
 public interface QuartzService {
+    void addJob();
     /**
      * Launch Task
      *
