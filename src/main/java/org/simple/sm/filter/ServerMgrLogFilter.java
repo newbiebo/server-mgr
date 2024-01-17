@@ -1,6 +1,7 @@
 package org.simple.sm.filter;
 
 import lombok.extern.slf4j.Slf4j;
+import org.simple.sm.common.constant.ConstantReqMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 import org.springframework.web.util.ContentCachingRequestWrapper;
@@ -33,7 +34,11 @@ public class ServerMgrLogFilter extends OncePerRequestFilter {
             // Get body
             byte[] requestBody = req.getContentAsByteArray();
             byte[] responseBody = resp.getContentAsByteArray();
-            log.info("{}:{} PARAM:{}",request.getMethod(), request.getRequestURI(), "\n" + new String(requestBody, StandardCharsets.UTF_8));
+            if(ConstantReqMethod.GET.equals(request.getMethod())){
+                log.info("{}:{}",request.getMethod(), request.getRequestURI());
+            }else {
+                log.info("{}:{} PARAM:{}",request.getMethod(), request.getRequestURI(), "\n" + new String(requestBody, StandardCharsets.UTF_8));
+            }
             log.info("response: {}", new String(responseBody, StandardCharsets.UTF_8));
         } finally {
             // Finally remember to respond to the client with the cached data.
